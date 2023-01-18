@@ -1,5 +1,4 @@
 const { model, Schema } = require('mongoose');
-const { instituteSchema } = require('./institute');
 
 const userSchema = new Schema({
   firstName: {
@@ -8,14 +7,6 @@ const userSchema = new Schema({
   },
   lastName: {
     type: String,
-    required: true
-  },
-  type: {
-    type: String,
-    required: true
-  },
-  institute: {
-    type: instituteSchema,
     required: true
   },
   email: {

@@ -1,6 +1,7 @@
 const { Institute } = require("../models/institute");
 const { User } = require("../models/user");
 const bcrypt = require('bcryptjs');
+const { InstituteUser } = require("../models/instituteUser");
 
 async function getInstitute (req, res) {
   try {
@@ -15,22 +16,11 @@ async function getInstitute (req, res) {
 
 async function postInstitute (req, res) {
   try {
-    const { name, type, firstName, lastName, email, password } = req.body;
-    const checkUser = await User.find({email});
-    if (checkUser.length) {
-      res.status(401).send('An account with this email already exists.');
-    } else {
-      const newInstitute = await Institute.create({name, type});
+    const { name, type } = req.body;
+    const newInstitute = await Institute.create({name, type});
+    const newAdmin = await InstituteUser.create({user: req.user, type: 'admin', institute: newInstitute});
 
-      const salt = bcrypt.genSaltSync();
-      const encryptedPass = bcrypt.hashSync(password, salt);
-      const newAdmin = await User.create({firstName, lastName, email, password: encryptedPass, type: 'admin', institute: newInstitute});
-
-      const projection = {firstName: 1, lastName: 1, email: 1, type: 1, institute: 1};
-      const admin = await User.findById(newAdmin._id, projection);
-      
-      res.status(201).send({institute: newInstitute, admin: admin});
-    }
+    res.status(201).send(newInstitute);
   } catch (error) {
     console.log(error);
   }
