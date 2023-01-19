@@ -18,9 +18,9 @@ async function register (req, res) {
       const projection = {firstName: 1, lastName: 1, email: 1};
       const user = await User.findById(newUser._id, projection);
 
-      const token = jwt.sign(user, secret);
+      const token = jwt.sign({ _id: user._id}, secret);
       
-      res.setHeaders('Authorization', 'Bearer ' + token);
+      res.setHeader('Authorization', 'Bearer ' + token);
       res.status(201).send(user); 
     }
   } catch (error) {
@@ -33,17 +33,18 @@ async function register (req, res) {
 async function login (req, res) {
   try {
     const { email, password } = req.body;
-    const user = await User.find({ email })[0];
-    if (!user) {
+    const checkUser = await User.find({ email });
+    if (!checkUser.length) {
       res.status(401).send('There is no account with this email.');
     } else {
+      const user = checkUser[0];
       if (bcrypt.compareSync(password, user.password)) {
 
         const projection = {firstName: 1, lastName: 1, email: 1};
         const userToSend = await User.findById(user._id, projection);
 
-        const token = jwt.sign(userToSend, secret);
-        res.setHeaders('Authorization', 'Bearer ' + token);
+        const token = jwt.sign({ _id: user._id }, secret);
+        res.setHeader('Authorization', 'Bearer ' + token);
         res.status(201).send(userToSend); 
       } else {
         res.status(401).send('Invalid password.');

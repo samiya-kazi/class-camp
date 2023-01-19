@@ -5,13 +5,14 @@ const secret = process.env.JWT_SECRET;
 
 async function authMiddleware (req, res, next) {
   try {
-    const token = req.headers.get('Authorization');
-    if (token) {
+    const check = req.get('Authorization');
+    if (check) {
+      const token = check.split(' ')[1];
       const { _id } = jwt.verify(token, secret);
       const user = await User.findById(_id);
       if (user) {
         req.user = user;
-        next(req, res);
+        next();
       } else {
         res.status(401).send('Invalid token');
       }
@@ -19,7 +20,7 @@ async function authMiddleware (req, res, next) {
       res.status(401).send('You are not logged in.');
     }
   } catch (error) {
-    res.status(500).send(error);
+    res.status(500).send(error.error.message);
     console.log(error);
   }
 }
