@@ -5,9 +5,8 @@ const { InstituteUser } = require("../models/instituteUser");
 
 async function getInstitute (req, res) {
   try {
-    const { id } = req.params;
-    const institute = await Institute.findById(id);
-    res.status(200).send(institute);
+    const institutes = await Institute.find({ user: req.user });
+    res.status(200).send(institutes);
   } catch (error) {
     console.log(error);
   }
