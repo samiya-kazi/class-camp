@@ -1,4 +1,5 @@
 const { model, Schema } = require('mongoose');
+const { userSchema } = require('./user');
 
 const postSchema = new Schema({
   classId: {
@@ -11,6 +12,11 @@ const postSchema = new Schema({
   },
   postedDate: {
     type: Date,
+    required: true,
+    default: new Date()
+  },
+  postedBy: {
+    type: userSchema,
     required: true
   }
 });
