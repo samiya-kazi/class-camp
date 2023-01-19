@@ -1,4 +1,6 @@
 const { Class } = require("../models/class");
+const { InstituteUser } = require("../models/instituteUser");
+const { checkIfUserExists } = require('../util/helper')
 
 async function postClass (req, res) {
   try {
@@ -38,8 +40,42 @@ async function getUserClasses (req, res) {
   }
 }
 
+
+async function addUserToClass (req, res) {
+  try {
+    const { id } = req.params;
+    const { user } = req.body;
+    if (user) {
+      const clss = await Class.findById(id);
+      const userTypeCheck = await InstituteUser.find({'user._id': user._id, 'institute._id': clss.institute._id});
+
+      if (userTypeCheck[0].type === 'teacher') {
+
+        if (!checkIfUserExists(clss.teacher, user))
+          await Class.findByIdAndUpdate(id, {$push: {teacher: user}});
+        else res.send('Teacher is already in this class.');
+
+      } else if (userTypeCheck[0].type === 'student') {
+
+        if (!checkIfUserExists(clss.students, user)) {
+          await Class.findByIdAndUpdate(id, {$push: {students: user}});
+        }
+        else res.send('Student is already in this class.');
+        
+      }
+
+      const result = await Class.findById(id);
+      res.status(200).send(result);
+    }
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
+}
+
 module.exports = {
   postClass,
   getInstituteClasses,
-  getUserClasses
+  getUserClasses,
+  addUserToClass
 }

@@ -21,6 +21,7 @@ router.get('/institute/user/:type', authMiddleware, instituteController.getUsers
 router.post('/class', authMiddleware, classController.postClass);
 router.get('/class/institute/:id', authMiddleware, classController.getInstituteClasses);
 router.get('/class/user/institute/:instituteId', authMiddleware, classController.getUserClasses);
+router.put('/class/user/:id', authMiddleware, classController.addUserToClass)
 
 
 module.exports = router;
