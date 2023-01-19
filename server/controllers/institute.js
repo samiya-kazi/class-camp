@@ -8,6 +8,7 @@ async function getInstitute (req, res) {
     const institutes = await Institute.find({ user: req.user });
     res.status(200).send(institutes);
   } catch (error) {
+    res.status(500).send(error);
     console.log(error);
   }
 }
@@ -21,28 +22,71 @@ async function postInstitute (req, res) {
 
     res.status(201).send(newInstitute);
   } catch (error) {
+    res.status(500).send(error);
     console.log(error);
   }
 }
 
 
 async function addUser (req, res) {
-  const { email, institute } = req.body;
-  const { type } = req.params;
-  const checkUser = await User.find({ email });
-  if (!checkUser.length) {
-    // A user with this email does not exist
-    res.status(401).send('A user with this email does not exist.');
-  } else {
-    const user = checkUser[0];
-    const checkPosition = await InstituteUser.find({'user.email': user.email, 'institute._id': institute._id});
-    if (checkPosition.length) {
-      // User is already in the institution
-      res.status(401).send(`User is already in this institute as a ${checkPosition[0].type}.`);
+
+  try {
+    const { email, institute } = req.body;
+    const { type } = req.params;
+    const checkUser = await User.find({ email });
+    if (!checkUser.length) {
+      // A user with this email does not exist
+      res.status(401).send('A user with this email does not exist.');
     } else {
-      const newPosition = await InstituteUser.create({ user: user, institute, type });
-      res.status(201).send(newPosition);
+      const user = checkUser[0];
+      const checkPosition = await InstituteUser.find({'user.email': user.email, 'institute._id': institute._id});
+      if (checkPosition.length) {
+        // User is already in the institution
+        res.status(401).send(`User is already in this institute as a ${checkPosition[0].type}.`);
+      } else {
+        const newPosition = await InstituteUser.create({ user: user, institute, type });
+        res.status(201).send(newPosition);
+      }
     }
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
+
+}
+
+
+async function getAllUsers (req, res) {
+  try {
+    const { institute } = req.body;
+    const checkAdmin = await InstituteUser.find({'user._id': req.user._id, 'institute._id': institute._id});
+    if (!checkAdmin.length) {
+      res.status(401).send(`You are not authorized to view the users in this institute.`);
+    } else {
+      const users = await InstituteUser.find({'institute._id': institute._id}, {user: 1, type: 1});
+      res.status(200).send(users);
+    }
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
+}
+
+
+async function getUsersByType (req, res) {
+  try {
+    const { institute } = req.body;
+    const { type } = req.params;
+    const checkAdmin = await InstituteUser.find({'user._id': req.user._id, 'institute._id': institute._id});
+    if (!checkAdmin.length) {
+      res.status(401).send(`You are not authorized to view the users in this institute.`);
+    } else {
+      const users = await InstituteUser.find({'institute._id': institute._id, type}, {user: 1, type: 1});
+      res.status(200).send(users);
+    }
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
   }
 }
 
@@ -50,5 +94,7 @@ async function addUser (req, res) {
 module.exports = {  
   getInstitute,   
   postInstitute,
-  addUser
+  addUser,
+  getAllUsers,
+  getUsersByType
 }

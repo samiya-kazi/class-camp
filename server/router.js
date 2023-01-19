@@ -8,7 +8,10 @@ router.post('/login', userController.login);
 
 router.post('/institute', authMiddleware, instituteController.postInstitute);
 router.get('/institute', authMiddleware, instituteController.getInstitute);
-router.post('/institute/user/:type', authMiddleware, instituteController.addUser)
+
+router.post('/institute/user/:type', authMiddleware, instituteController.addUser);
+router.get('/institute/user', authMiddleware, instituteController.getAllUsers);
+router.get('/institute/user/:type', authMiddleware, instituteController.getUsersByType);
 
 
 module.exports = router;
