@@ -15,7 +15,31 @@ async function postClass (req, res) {
   }
 }
 
+async function getInstituteClasses (req, res) {
+  try {
+    const { id } = req.params;
+    const clss = await Class.find({'institute._id': id});
+    res.status(200).send(clss);
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
+}
+
+
+async function getUserClasses (req, res) {
+  try {
+    const { instituteId } = req.params;
+    const clss = await Class.find({'institute._id': instituteId, 'students._id': {$in: req.user._id}});
+    res.status(200).send(clss);
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
+}
 
 module.exports = {
-  postClass
+  postClass,
+  getInstituteClasses,
+  getUserClasses
 }

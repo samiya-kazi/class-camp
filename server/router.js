@@ -18,9 +18,9 @@ router.get('/institute/user', authMiddleware, instituteController.getAllUsers);
 router.get('/institute/user/:type', authMiddleware, instituteController.getUsersByType);
 
 /* Class Routes */
-router.post('/class', authMiddleware, classController.postClass)
-router.get('/class/institute/:id')
-router.get('/class/user')
+router.post('/class', authMiddleware, classController.postClass);
+router.get('/class/institute/:id', authMiddleware, classController.getInstituteClasses);
+router.get('/class/user/institute/:instituteId', authMiddleware, classController.getUserClasses);
 
 
 module.exports = router;
