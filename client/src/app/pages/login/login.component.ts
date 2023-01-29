@@ -34,8 +34,11 @@ export class LoginComponent implements OnInit {
     const { email, password } = this.loginForm.value;
     if (email && password) {
       this.auth.login(email, password).subscribe({
-        next: (user) => {
-          this.store.dispatch(SetUserAction({payload: user}));
+        next: (res) => {
+          const user = res.body;
+          const token = res.headers.get('Authorization');
+          if (token) localStorage.setItem('accessToken', token);
+          if (user) this.store.dispatch(SetUserAction({payload: user}));
           this.router.navigate(['home']);
         },
         error: err => {

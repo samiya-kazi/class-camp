@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -19,8 +19,8 @@ export class AuthService {
     private router: Router
     ) { }
 
-  login (email : string, password: string) : Observable<User>{
-    return this.http.post<User>(this.rootUrl + '/login', {email, password});
+  login (email : string, password: string) : Observable<HttpResponse<User>>{
+    return this.http.post<User>(this.rootUrl + '/login', {email, password}, {observe: 'response'});
   }
 
   register (firstName: string, lastName: string, email : string, password: string) : Observable<User>{
@@ -31,5 +31,10 @@ export class AuthService {
     localStorage.clear();
     this.store.dispatch(RemoveUserAction());
     this.router.navigate(['']);
+  }
+
+  isLoggedIn () {
+    const token = localStorage.getItem('accessToken');
+    return token ? true : false;
   }
 }

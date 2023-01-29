@@ -9,7 +9,13 @@ const URI = process.env.MONGOOSE_URI;
 
 const app = express();
 
-app.use(cors());
+const corsConfig = {
+  origin: 'http://localhost:4200',
+  credentials: true,
+  exposedHeaders: ['Authorization']
+}
+
+app.use(cors(corsConfig));
 app.use(express.json());
 app.use(router);
 
