@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
   }
 
   handleSubmit () {
-    console.log(this.loginForm.errors);
     const { email, password } = this.loginForm.value;
     if (email && password) {
       this.auth.login(email, password).subscribe({
