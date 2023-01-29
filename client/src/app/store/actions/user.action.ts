@@ -8,6 +8,5 @@ export const SetUserAction = createAction(
 );
 
 export const RemoveUserAction = createAction(
-  '[USER] Remove user ',
-  props<{payload: undefined}>()
+  '[USER] Remove user '
 );

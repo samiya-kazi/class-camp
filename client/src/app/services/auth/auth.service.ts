@@ -1,7 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { State } from 'src/app/models/state.model';
 import { User } from 'src/app/models/user.model';
+import { RemoveUserAction } from 'src/app/store/actions/user.action';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +13,11 @@ import { User } from 'src/app/models/user.model';
 export class AuthService {
 
   rootUrl = 'http://localhost:3000';
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient, 
+    private store: Store<State>, 
+    private router: Router
+    ) { }
 
   login (email : string, password: string) : Observable<User>{
     return this.http.post<User>(this.rootUrl + '/login', {email, password});
@@ -21,5 +29,7 @@ export class AuthService {
 
   logout () {
     localStorage.clear();
+    this.store.dispatch(RemoveUserAction());
+    this.router.navigate(['']);
   }
 }

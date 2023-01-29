@@ -1,19 +1,12 @@
 <div class="container">
   <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <span>
-        <a routerLink="/">Class Camp</a>
-      </span>
-
+      <span><a routerLink="/">Class Camp</a></span>
       <span class="spacer"></span>
       
-      <a routerLink="/login">
-        <button class="nav-button">Login</button>
-      </a>
-
-      <a routerLink="/register">
-        <button class="nav-button">Register</button>
-      </a>
+      <a *ngIf="!loggedIn" routerLink="/login"><button class="nav-button">Login</button></a>
+      <a *ngIf="!loggedIn" routerLink="/register"><button class="nav-button">Register</button></a>
+      <button *ngIf="loggedIn" class="nav-button" (click)="handleLogout()">Logout</button>
     </mat-toolbar-row>
   </mat-toolbar>
 </div>
