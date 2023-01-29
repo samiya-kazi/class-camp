@@ -1,0 +1,27 @@
+.container {
+  width: 100%;
+}
+
+.nav-button {
+  padding: 14px;
+  margin: 10px;
+  background-color: transparent;
+  color: white;
+  font-size: medium;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-button:hover {
+  background-color: white;
+  color: black;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}

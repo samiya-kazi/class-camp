@@ -11,13 +11,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginComponent } from './pages/login/login.component';
 import { MatIconModule } from '@angular/material';
+import { MatToolbarModule } from '@angular/material/toolbar'
 import { RegisterComponent } from './pages/register/register.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    NavBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,7 @@ import { RegisterComponent } from './pages/register/register.component';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+    MatToolbarModule,
     StoreModule.forRoot({institute: InstituteReducer})
   ],
   providers: [],
