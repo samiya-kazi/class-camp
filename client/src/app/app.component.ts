@@ -12,16 +12,5 @@ import { SetInstituteAction } from './store/actions/institute.action';
 })
 export class AppComponent {
   title = 'class-camp';
-
-  institute$: Observable<Institute> | undefined;
-
-  constructor(private store: Store<State>) {}
-
-  ngOnInit(): void {
-    this.institute$ = this.store.select((store) => store.institute);
-  }
-
-  handleClick () {
-    this.store.dispatch(SetInstituteAction({payload: {_id: '123', name: 'Samiya Code', type: 'test'}}));
-  }
+  hide = true;
 }
