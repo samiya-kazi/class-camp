@@ -17,9 +17,10 @@
       <mat-error *ngIf="password?.errors?.['required']">Password is required</mat-error>
     </mat-form-field>
   
-    <mat-error>{{errorMessage}}</mat-error>
     <button mat-raised-button color="primary">Submit</button>
 
     <p>Don't have an account? <span><a routerLink="/register">Register.</a></span></p>
+    
+    <div *ngIf="errorMessage.length" class="error-message">{{errorMessage}}</div>
   </form>
 </div>

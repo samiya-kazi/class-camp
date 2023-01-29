@@ -6,3 +6,22 @@ body {
   height: 100%;
   font-family: 'Roboto';
 }
+
+.error-message {
+  background-color: indianred;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  border: crimson solid 3px;
+  border-radius: 10px;
+  color: white;
+  margin: 10px 0;
+  animation: fadeIn 3s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  25% { opacity: 1; }
+  75% { opacity: 1; }
+  100% { opacity: 0; }
+}

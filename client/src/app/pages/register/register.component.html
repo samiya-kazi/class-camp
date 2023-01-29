@@ -6,20 +6,20 @@
       <input matInput formControlName="firstName" [required]="true"/>
       <mat-error *ngIf="firstName?.errors?.['required']">First name is required</mat-error>
     </mat-form-field>
-
+    
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Last Name</mat-label>
       <input matInput formControlName="lastName" [required]="true"/>
       <mat-error *ngIf="lastName?.errors?.['required']">Last name is required</mat-error>
     </mat-form-field>
-
+    
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Email</mat-label>
       <input matInput formControlName="email" [required]="true"/>
       <mat-error *ngIf="email?.errors?.['email']">Email is invalid</mat-error>
       <mat-error *ngIf="email?.errors?.['required']">Email is required</mat-error>
     </mat-form-field>
-  
+    
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Password</mat-label>
       <input matInput [type]="hidePass ? 'password' : 'text'" formControlName="password" [required]="true">
@@ -38,13 +38,16 @@
       </button>
       <mat-error *ngIf="confirmPassword?.value !== password?.value">Passwords do not match</mat-error>
     </mat-form-field>
-  
+    
     <button mat-raised-button color="primary">Submit</button>
-
+    
     <p>Already have an account? <a routerLink="/login">Login</a> here.</p>
-
+    
+    <div *ngIf="errorMessage.length" class="error-message">{{errorMessage}}</div>
+    
     <div *ngIf="success" class="success-message">
       New account created. <a routerLink="/login">Login</a> here.
     </div>
+    
   </form>
 </div>
