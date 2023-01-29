@@ -13,10 +13,11 @@ import { SetUserAction } from 'src/app/store/actions/user.action';
 export class LoginComponent implements OnInit {
 
   hide = true;
+  errorMessage = '';
 
   loginForm = this.fb.group({
-    email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   })
 
   constructor(
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   handleSubmit () {
+    console.log(this.loginForm.errors);
     const { email, password } = this.loginForm.value;
     if (email && password) {
       this.auth.login(email, password).subscribe({
@@ -37,9 +39,18 @@ export class LoginComponent implements OnInit {
           this.store.dispatch(SetUserAction({payload: user}));
           this.router.navigate(['home']);
         },
-        error: err => console.log(err)
+        error: err => {
+          this.errorMessage = err.error;
+          setTimeout(() => {
+            this.errorMessage = '';
+          }, 3000)
+        }
       });
     }
   }
+
+  get email() { return this.loginForm.get('email'); }
+
+  get password() { return this.loginForm.get('password'); }
 
 }

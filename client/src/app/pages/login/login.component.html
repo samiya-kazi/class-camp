@@ -4,6 +4,8 @@
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Email</mat-label>
       <input matInput formControlName="email"/>
+      <mat-error *ngIf="email?.errors?.['email']">Email is invalid</mat-error>
+      <mat-error *ngIf="email?.errors?.['required']">Email is required</mat-error>
     </mat-form-field>
   
     <mat-form-field appearance="fill" class="full-width">
@@ -12,8 +14,10 @@
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
+      <mat-error *ngIf="password?.errors?.['required']">Password is required</mat-error>
     </mat-form-field>
   
+    <mat-error>{{errorMessage}}</mat-error>
     <button mat-raised-button color="primary">Submit</button>
 
     <p>Don't have an account? <span><a routerLink="/register">Register.</a></span></p>
