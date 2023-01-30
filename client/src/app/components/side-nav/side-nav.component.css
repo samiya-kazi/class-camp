@@ -1,7 +1,6 @@
 .container {
-  width: 200px;
+  width: 140px;
   height: 93vh;
-  border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .sidenav-content {
@@ -12,4 +11,12 @@
 
 .sidenav {
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-button {
+  margin: 20px 10px;
 }

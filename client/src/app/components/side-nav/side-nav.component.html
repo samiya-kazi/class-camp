@@ -1,11 +1,21 @@
 <mat-drawer-container class="container" [autosize]="true">
   <mat-drawer #drawer class="sidenav" mode="side">
-    <button>Hi</button>
+    <div class="nav-button">
+      <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+        <mat-icon>home</mat-icon>
+      </button>
+    </div>
+
+    <div class="nav-button">
+      <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
   </mat-drawer>
 
   <div class="sidenav-content">
-    <button type="button" mat-button (click)="drawer.toggle()">
-      >
+    <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" (click)="drawer.toggle()">
+      <mat-icon>{{drawer.opened ? 'keyboard_arrow_left' : 'keyboard_arrow_right'}}</mat-icon>
     </button>
   </div>
 
