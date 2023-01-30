@@ -14,6 +14,8 @@ export class HomePageComponent implements OnInit {
 
   user!: User;
   institutes: Institute[] = [];
+  adminInstitutes: Institute[] = [];
+  otherInstitutes: Institute[] = [];
 
   constructor(private store: Store<State>, private api: ApiClientService) { 
     
@@ -27,7 +29,12 @@ export class HomePageComponent implements OnInit {
   }
 
   getInstitutes () {
-    this.api.getUserInstitutes().subscribe(institutes => this.institutes = institutes);
+    this.api.getUserInstitutes().subscribe(institutes => {
+      console.log(institutes)
+      this.institutes = institutes.map(res => res.institute);
+      this.adminInstitutes = institutes.filter(res => res.userType === 'admin').map(res => res.institute);
+      this.otherInstitutes = institutes.filter(res => res.userType !== 'admin').map(res => res.institute);
+    });
   }
 
 }

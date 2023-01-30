@@ -1,0 +1,14 @@
+<mat-card class="card">
+  <mat-card-header>
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title>{{institute.name}}</mat-card-title>
+    <mat-card-subtitle>{{institute.type}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="https://codeop.tech/wp-content/uploads/2021/12/img1-3.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p *ngFor="let clss of classes">{{clss.name}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>Remove</button>
+  </mat-card-actions>
+</mat-card>

@@ -1,7 +1,14 @@
 <div class="container">
   <app-side-nav></app-side-nav>
   <div class="content-container">
-    <app-banner></app-banner>
-    <p>{{user.firstName}}</p>
+    <h3>Your Institutions</h3>
+    <div class="card-holder">
+      <app-display-card *ngFor="let institute of adminInstitutes" [institute]="institute"></app-display-card>
+    </div>
+
+    <h3>Institutions you've been added to</h3>
+    <div class="card-holder">
+      <app-display-card *ngFor="let institute of otherInstitutes" [institute]="institute"></app-display-card>
+    </div>
   </div>
 </div>

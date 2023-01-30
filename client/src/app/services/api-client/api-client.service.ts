@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Institute } from 'src/app/models/institute.model';
+import { InstituteClass } from 'src/app/models/class.model';
+import { InstituteUser } from 'src/app/models/institute-user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,11 @@ export class ApiClientService {
 
   constructor(private http: HttpClient) { }
 
-  getUserInstitutes () : Observable<Institute[]> {
-    return this.http.get<Institute[]>(this.rootUrl + '/institute');
+  getUserInstitutes () : Observable<InstituteUser[]> {
+    return this.http.get<InstituteUser[]>(this.rootUrl + '/institute');
+  }
+
+  getClasses (id : string) : Observable<InstituteClass[]> {
+    return this.http.get<InstituteClass[]>(this.rootUrl + '/class/institute/' + id);
   }
 }
