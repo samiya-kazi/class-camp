@@ -23,7 +23,7 @@
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Password</mat-label>
       <input matInput [type]="hidePass ? 'password' : 'text'" formControlName="password" [required]="true">
-      <button mat-icon-button matSuffix (click)="hidePass = !hidePass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePass">
+      <button type="button" mat-icon-button matSuffix (click)="hidePass = !hidePass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePass">
         <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
       <mat-error *ngIf="password?.errors?.['required']">Password is required</mat-error>
@@ -33,7 +33,7 @@
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Confirm Password</mat-label>
       <input matInput [type]="hideConfirmPass ? 'password' : 'text'" formControlName="confirmPassword" [required]="true">
-      <button mat-icon-button matSuffix (click)="hideConfirmPass = !hideConfirmPass" [attr.aria-label]="'Hide confirm password'" [attr.aria-pressed]="hideConfirmPass">
+      <button type="button" mat-icon-button matSuffix (click)="hideConfirmPass = !hideConfirmPass" [attr.aria-label]="'Hide confirm password'" [attr.aria-pressed]="hideConfirmPass">
         <mat-icon>{{hideConfirmPass ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
       <mat-error *ngIf="confirmPassword?.value !== password?.value">Passwords do not match</mat-error>
