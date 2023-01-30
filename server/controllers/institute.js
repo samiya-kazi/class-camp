@@ -5,7 +5,7 @@ const { InstituteUser } = require("../models/instituteUser");
 
 async function getInstitute (req, res) {
   try {
-    const institutes = await Institute.find({ user: req.user });
+    const institutes = await InstituteUser.find({ user: req.user });
     res.status(200).send(institutes);
   } catch (error) {
     res.status(500).send(error);

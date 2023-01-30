@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Institute } from 'src/app/models/institute.model';
 import { State } from 'src/app/models/state.model';
 import { User } from 'src/app/models/user.model';
+import { ApiClientService } from 'src/app/services/api-client/api-client.service';
 
 @Component({
   selector: 'app-home-page',
@@ -11,14 +13,21 @@ import { User } from 'src/app/models/user.model';
 export class HomePageComponent implements OnInit {
 
   user!: User;
+  institutes: Institute[] = [];
 
-  constructor(private store: Store<State>) { 
+  constructor(private store: Store<State>, private api: ApiClientService) { 
     
   }
 
   ngOnInit(): void {
     const user$ = this.store.select(store => store.user);
     user$.subscribe(userArr => this.user = userArr[0]);
+
+    this.getInstitutes();
+  }
+
+  getInstitutes () {
+    this.api.getUserInstitutes().subscribe(institutes => this.institutes = institutes);
   }
 
 }

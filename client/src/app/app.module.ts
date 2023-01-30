@@ -15,11 +15,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { RegisterComponent } from './pages/register/register.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { UserReducer } from './store/reducers/user.reducer';
 import { BannerComponent } from './components/banner/banner.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { AccessTokenInterceptorService } from './services/interceptors/access-token-interceptor/access-token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
     MatSidenavModule,
     StoreModule.forRoot({institute: InstituteReducer, user: UserReducer})
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AccessTokenInterceptorService, multi: true }],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
