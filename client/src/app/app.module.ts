@@ -21,6 +21,7 @@ import { UserReducer } from './store/reducers/user.reducer';
 import { BannerComponent } from './components/banner/banner.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { AccessTokenInterceptorService } from './services/interceptors/access-token-interceptor/access-token-interceptor.service';
+import { StorageTokenInterceptorService } from './services/interceptors/storage-token-interceptor/storage-token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,10 @@ import { AccessTokenInterceptorService } from './services/interceptors/access-to
     MatSidenavModule,
     StoreModule.forRoot({institute: InstituteReducer, user: UserReducer})
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AccessTokenInterceptorService, multi: true }],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AccessTokenInterceptorService, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: StorageTokenInterceptorService, multi: true },
+  ],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
