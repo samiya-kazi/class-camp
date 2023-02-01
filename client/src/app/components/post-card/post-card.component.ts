@@ -9,10 +9,14 @@ import { Post } from 'src/app/models/post.model';
 export class PostCardComponent implements OnInit {
 
   @Input() post! : Post
+  hide = true;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  toggleHide () {
+    this.hide = !this.hide;
+  }
 }
