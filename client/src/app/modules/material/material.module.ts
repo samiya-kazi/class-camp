@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
 
 
 
@@ -18,7 +19,8 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatCardModule
+    MatCardModule,
+    MatChipsModule
   ],
   exports: [
     MatInputModule,
@@ -26,7 +28,8 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatCardModule
+    MatCardModule,
+    MatChipsModule
   ]
 })
 export class MaterialModule { }

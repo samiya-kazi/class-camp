@@ -1,0 +1,9 @@
+<div class="container">
+  <app-side-nav></app-side-nav>
+  <div class="content-container">
+    <h3>Classes</h3>
+    <div class="card-holder">
+      <app-display-card *ngFor="let class of classes" [item]="class"></app-display-card>
+    </div>
+  </div>
+</div>

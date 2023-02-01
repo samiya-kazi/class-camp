@@ -4,6 +4,7 @@ import { Institute } from 'src/app/models/institute.model';
 import { State } from 'src/app/models/state.model';
 import { User } from 'src/app/models/user.model';
 import { ApiClientService } from 'src/app/services/api-client/api-client.service';
+import { RemoveInstituteAction } from 'src/app/store/actions/institute.action';
 
 @Component({
   selector: 'app-home-page',
@@ -24,13 +25,13 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     const user$ = this.store.select(store => store.user);
     user$.subscribe(userArr => this.user = userArr[0]);
+    this.store.dispatch(RemoveInstituteAction({payload: undefined}));
 
     this.getInstitutes();
   }
 
   getInstitutes () {
     this.api.getUserInstitutes().subscribe(institutes => {
-      console.log(institutes)
       this.institutes = institutes.map(res => res.institute);
       this.adminInstitutes = institutes.filter(res => res.userType === 'admin').map(res => res.institute);
       this.otherInstitutes = institutes.filter(res => res.userType !== 'admin').map(res => res.institute);
