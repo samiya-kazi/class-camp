@@ -19,6 +19,16 @@ body {
   animation: fadeIn 3s;
 }
 
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.card-holder {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 @keyframes fadeIn {
   0% { opacity: 0; }
   25% { opacity: 1; }

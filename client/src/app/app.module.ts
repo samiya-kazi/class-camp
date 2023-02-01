@@ -21,6 +21,8 @@ import { BannerComponent } from './components/banner/banner.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { DisplayCardComponent } from './components/display-card/display-card.component';
 import { InstitutePageComponent } from './pages/institute-page/institute-page.component';
+import { ClassPageComponent } from './pages/class-page/class-page.component';
+import { PostCardComponent } from './components/post-card/post-card.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { InstitutePageComponent } from './pages/institute-page/institute-page.co
     SideNavComponent,
     DisplayCardComponent,
     InstitutePageComponent,
+    ClassPageComponent,
+    PostCardComponent,
   ],
   imports: [
     BrowserModule,
