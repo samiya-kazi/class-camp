@@ -37,10 +37,13 @@ export class DisplayCardComponent implements OnInit {
     return data.type;
   }
 
-  onInstituteClick () {
-    if (this.instanceOfInstitute(this.item))
-    this.store.dispatch(SetInstituteAction({payload: this.item}));
-    this.router.navigateByUrl(`/institute/${this.item._id}`);
+  onClick () {
+    if (this.instanceOfInstitute(this.item)) {
+      this.store.dispatch(SetInstituteAction({payload: this.item}));
+      this.router.navigateByUrl(`/institute/${this.item._id}`);
+    } else {
+      this.router.navigateByUrl(`/class/${this.item._id}`);
+    }
   }
 
 }

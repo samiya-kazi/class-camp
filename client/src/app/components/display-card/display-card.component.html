@@ -1,29 +1,14 @@
-<mat-card *ngIf="instanceOfInstitute(item)" class="card" (click)="onInstituteClick()">
+<mat-card class="card" (click)="onClick()">
   <mat-card-header>
     <mat-chip-list>
-      <mat-chip>Institute</mat-chip>
+      <mat-chip>{{instanceOfInstitute(item) ? 'Institute' : 'Class'}}</mat-chip>
     </mat-chip-list>
     <mat-card-title>{{item.name}}</mat-card-title>
-    <mat-card-subtitle>{{item.type}}</mat-card-subtitle>
+    <mat-card-subtitle>{{instanceOfInstitute(item) ? item.type : 'Section:' + item.section}}</mat-card-subtitle>
   </mat-card-header>
   <img mat-card-image src="https://codeop.tech/wp-content/uploads/2021/12/img1-3.jpg" alt="Photo of a someone on a laptop">
   <mat-card-content>
     <p *ngFor="let clss of classes">{{clss.name}}</p>
-  </mat-card-content>
-  <!-- <mat-card-actions>
-    <button mat-button>Remove</button>
-  </mat-card-actions> -->
-</mat-card>
-
-<mat-card *ngIf="!instanceOfInstitute(item)" class="card">
-  <mat-card-header [routerLink]="'/class/' + item._id">
-    <div mat-card-avatar class="header-image"></div>
-    <mat-card-title>{{item.name}}</mat-card-title>
-    <mat-card-subtitle>{{item.section}}</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="https://codeop.tech/wp-content/uploads/2021/12/img1-3.jpg" alt="Photo of a someone on a laptop">
-  <mat-card-content>
-    <p>{{item.description}}</p>
   </mat-card-content>
   <!-- <mat-card-actions>
     <button mat-button>Remove</button>
