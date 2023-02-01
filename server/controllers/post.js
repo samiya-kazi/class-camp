@@ -53,9 +53,26 @@ async function deletePost (req, res) {
   }
 }
 
+
+async function addComment (req, res) {
+  try {
+    const postId = req.params.id;
+    const { content } = req.body;
+
+    const query = {$push: {comments: {content, postedBy: req.user, postedDate: new Date()}}};
+    const updatedPost = await Post.findByIdAndUpdate(postId, query, {new: true});
+    const comments = updatedPost.comments;
+    res.status(200).send(comments);
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
+}
+
 module.exports = {
   getPosts,
   newPost,
   updatePost,
-  deletePost
+  deletePost,
+  addComment
 }
