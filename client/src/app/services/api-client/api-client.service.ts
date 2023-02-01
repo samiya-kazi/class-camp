@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { InstituteClass } from 'src/app/models/class.model';
 import { InstituteUser } from 'src/app/models/institute-user.model';
 import { Post } from 'src/app/models/post.model';
+import { Comment } from 'src/app/models/comment.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +29,9 @@ export class ApiClientService {
 
   addPost (classId: string, content: string) : Observable<Post>{
     return this.http.post<Post>(this.rootUrl + '/class/' + classId + '/post', {content});
+  }
+
+  addComment (postId: string, content: string) : Observable<Comment[]>{
+    return this.http.post<Comment[]>(this.rootUrl + '/post/' + postId + '/comment', {content});
   }
 }

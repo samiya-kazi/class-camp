@@ -15,7 +15,8 @@
     <div *ngIf="!post.comments.length">No comments for this post.</div>
     <mat-form-field>
       <mat-label>Comment</mat-label>
-      <textarea matInput placeholder="Leave a comment"></textarea>
+      <textarea matInput [formControl]='comment' placeholder="Leave a comment"></textarea>
     </mat-form-field>
+    <button (click)="handleSubmit()">Comment</button>
   </mat-card-content>
 </mat-card>
