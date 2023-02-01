@@ -25,4 +25,8 @@ export class ApiClientService {
   getPosts (id : string) : Observable<Post[]> {
     return this.http.get<Post[]>(this.rootUrl + '/class/' + id + '/post');
   }
+
+  addPost (classId: string, content: string) : Observable<Post>{
+    return this.http.post<Post>(this.rootUrl + '/class/' + classId + '/post', {content});
+  }
 }

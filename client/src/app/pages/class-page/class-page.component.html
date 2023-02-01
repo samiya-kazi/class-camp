@@ -1,6 +1,13 @@
 <div class="container">
   <app-side-nav></app-side-nav>
   <div class="content-container">
+    <div class="post-form">
+      <mat-form-field appearance="outline" class="post-form-input">
+        <mat-label>Post</mat-label>
+        <textarea matInput [formControl]="post" placeholder="Make a post for the class..."></textarea>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="handlePostSubmit()">Post</button>
+    </div>
     <app-post-card *ngFor="let post of posts" [post]="post"></app-post-card>
   </div>
 </div>

@@ -1,0 +1,17 @@
+.post-form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.content-container {
+  width: 60%;
+}
+
+.post-form-input {
+  flex-grow: 1;
+}
+
+button {
+  margin: 0 5%;
+}
