@@ -23,6 +23,7 @@ import { DisplayCardComponent } from './components/display-card/display-card.com
 import { InstitutePageComponent } from './pages/institute-page/institute-page.component';
 import { ClassPageComponent } from './pages/class-page/class-page.component';
 import { PostCardComponent } from './components/post-card/post-card.component';
+import { CommentCardComponent } from './components/comment-card/comment-card.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { PostCardComponent } from './components/post-card/post-card.component';
     InstitutePageComponent,
     ClassPageComponent,
     PostCardComponent,
+    CommentCardComponent,
   ],
   imports: [
     BrowserModule,

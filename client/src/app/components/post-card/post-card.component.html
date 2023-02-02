@@ -11,7 +11,7 @@
     <button mat-button color="primary" (click)="toggleHide()">Comments ({{post.comments.length}})</button>
   </mat-card-actions>
   <mat-card-content *ngIf="!hide">
-    <div *ngFor="let comment of post.comments">{{comment.content}}</div>
+    <app-comment-card *ngFor="let comment of post.comments" [comment]="comment"></app-comment-card>
     <div *ngIf="!post.comments.length">No comments for this post.</div>
     <mat-form-field>
       <mat-label>Comment</mat-label>
