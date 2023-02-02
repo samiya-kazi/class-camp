@@ -5,5 +5,5 @@ export interface InstituteUser {
   _id: string,
   institute: Institute,
   user: User,
-  userType: string
+  type: string
 }

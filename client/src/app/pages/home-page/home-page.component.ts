@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Institute } from 'src/app/models/institute.model';
 import { State } from 'src/app/models/state.model';
@@ -18,7 +19,11 @@ export class HomePageComponent implements OnInit {
   adminInstitutes: Institute[] = [];
   otherInstitutes: Institute[] = [];
 
-  constructor(private store: Store<State>, private api: ApiClientService) { 
+  constructor(
+    private store: Store<State>, 
+    private api: ApiClientService,
+    private router: Router
+    ) { 
     
   }
 
@@ -32,10 +37,15 @@ export class HomePageComponent implements OnInit {
 
   getInstitutes () {
     this.api.getUserInstitutes().subscribe(institutes => {
+      console.log(institutes)
       this.institutes = institutes.map(res => res.institute);
-      this.adminInstitutes = institutes.filter(res => res.userType === 'admin').map(res => res.institute);
-      this.otherInstitutes = institutes.filter(res => res.userType !== 'admin').map(res => res.institute);
+      this.adminInstitutes = institutes.filter(res => res.type === 'admin').map(res => res.institute);
+      this.otherInstitutes = institutes.filter(res => res.type !== 'admin').map(res => res.institute);
     });
+  }
+
+  handleNewInstituteClick () {
+    this.router.navigate(['create/institute']);
   }
 
 }

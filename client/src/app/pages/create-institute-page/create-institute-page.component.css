@@ -1,0 +1,10 @@
+.content-container {
+  flex-grow: 1;
+}
+
+form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

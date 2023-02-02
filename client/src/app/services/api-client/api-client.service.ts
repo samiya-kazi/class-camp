@@ -5,6 +5,7 @@ import { InstituteClass } from 'src/app/models/class.model';
 import { InstituteUser } from 'src/app/models/institute-user.model';
 import { Post } from 'src/app/models/post.model';
 import { Comment } from 'src/app/models/comment.model';
+import { Institute } from 'src/app/models/institute.model';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,9 @@ export class ApiClientService {
 
   addComment (postId: string, content: string) : Observable<Comment[]>{
     return this.http.post<Comment[]>(this.rootUrl + '/post/' + postId + '/comment', {content});
+  }
+
+  addInstitute (name: string, type: string, description?: string | null) : Observable<Institute>{
+    return this.http.post<Institute>(this.rootUrl + '/institute', {name, type, description});
   }
 }

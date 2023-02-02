@@ -1,6 +1,7 @@
 <div class="container">
   <app-side-nav></app-side-nav>
   <div class="content-container">
+    <button mat-raised-button color="primary" (click)="handleNewInstituteClick()"><mat-icon>add</mat-icon> Create a new Institute</button>
     <h3>Your Institutions</h3>
     <div class="card-holder">
       <app-display-card *ngFor="let institute of adminInstitutes" [item]="institute"></app-display-card>
