@@ -1,3 +1,5 @@
 .post-card {
   width: 60vw;
+  border: grey solid 1px;
+  margin: 2% 0;
 }

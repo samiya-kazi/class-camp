@@ -13,7 +13,7 @@
   <mat-card-content *ngIf="!hide">
     <app-comment-card *ngFor="let comment of post.comments" [comment]="comment"></app-comment-card>
     <div *ngIf="!post.comments.length">No comments for this post.</div>
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <mat-label>Comment</mat-label>
       <textarea matInput [formControl]='comment' placeholder="Leave a comment"></textarea>
     </mat-form-field>
