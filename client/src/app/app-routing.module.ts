@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ClassPageComponent } from './pages/class-page/class-page.component';
 import { CreateInstitutePageComponent } from './pages/create-institute-page/create-institute-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { InstituteAdminPageComponent } from './pages/institute-admin-page/institute-admin-page.component';
 import { InstitutePageComponent } from './pages/institute-page/institute-page.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'home', component: HomePageComponent, canActivate: [AuthGuard]},
   {path: 'institute/:id', component: InstitutePageComponent, canActivate: [AuthGuard]},
   {path: 'create/institute', component: CreateInstitutePageComponent, canActivate: [AuthGuard]},
+  {path: 'institute/:id/admin', component: InstituteAdminPageComponent, canActivate: [AuthGuard]},
   {path: 'class/:id', component: ClassPageComponent, canActivate: [AuthGuard]},
   {path: '', pathMatch: 'full', redirectTo: 'login'}
 ];

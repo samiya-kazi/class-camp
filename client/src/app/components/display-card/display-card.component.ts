@@ -14,6 +14,7 @@ import { SetInstituteAction } from 'src/app/store/actions/institute.action';
 export class DisplayCardComponent implements OnInit {
 
   @Input() item!: Institute | InstituteClass;
+  @Input() isAdmin!: boolean;
 
   classes: InstituteClass[] = [];
 

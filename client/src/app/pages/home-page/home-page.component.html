@@ -4,12 +4,12 @@
     <button mat-raised-button color="primary" (click)="handleNewInstituteClick()"><mat-icon>add</mat-icon> Create a new Institute</button>
     <h3>Your Institutions</h3>
     <div class="card-holder">
-      <app-display-card *ngFor="let institute of adminInstitutes" [item]="institute"></app-display-card>
+      <app-display-card *ngFor="let institute of adminInstitutes" [item]="institute" [isAdmin]="true"></app-display-card>
     </div>
 
     <h3>Institutions you've been added to</h3>
     <div class="card-holder">
-      <app-display-card *ngFor="let institute of otherInstitutes" [item]="institute"></app-display-card>
+      <app-display-card *ngFor="let institute of otherInstitutes" [item]="institute" [isAdmin]="false"></app-display-card>
     </div>
   </div>
 </div>

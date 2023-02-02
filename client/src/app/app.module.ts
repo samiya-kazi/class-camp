@@ -25,6 +25,7 @@ import { ClassPageComponent } from './pages/class-page/class-page.component';
 import { PostCardComponent } from './components/post-card/post-card.component';
 import { CommentCardComponent } from './components/comment-card/comment-card.component';
 import { CreateInstitutePageComponent } from './pages/create-institute-page/create-institute-page.component';
+import { InstituteAdminPageComponent } from './pages/institute-admin-page/institute-admin-page.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { CreateInstitutePageComponent } from './pages/create-institute-page/crea
     PostCardComponent,
     CommentCardComponent,
     CreateInstitutePageComponent,
+    InstituteAdminPageComponent,
   ],
   imports: [
     BrowserModule,
