@@ -6,7 +6,11 @@
       <h3>Institute name: {{institute.name}}</h3>
     </div>
     <mat-tab-group  mat-align-tabs="center" style="height:100vh">
-      <mat-tab label="Classes"> Content 1 </mat-tab>
+      <mat-tab label="Classes">
+        <div class="card-holder">
+          <app-display-card *ngFor="let item of classes" [item]="item"></app-display-card>
+        </div>
+      </mat-tab>
       <mat-tab label="Member Access"> Content 2 </mat-tab>
       <mat-tab label="Settings"> Content 3 </mat-tab>
     </mat-tab-group>
