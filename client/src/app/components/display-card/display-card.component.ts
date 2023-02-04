@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { InstituteClass } from 'src/app/models/class.model';
 import { Institute } from 'src/app/models/institute.model';
+import { State } from 'src/app/models/state.model';
 import { ApiClientService } from 'src/app/services/api-client/api-client.service';
 import { SetInstituteAction } from 'src/app/store/actions/institute.action';
 
@@ -20,9 +21,8 @@ export class DisplayCardComponent implements OnInit {
 
   constructor(
     private api: ApiClientService, 
-    private store: Store,
+    private store: Store<State>,
     private router: Router
-
     ) { }
 
   ngOnInit(): void {
@@ -44,6 +44,14 @@ export class DisplayCardComponent implements OnInit {
       this.router.navigateByUrl(`/institute/${this.item._id}`);
     } else {
       this.router.navigateByUrl(`/class/${this.item._id}`);
+    }
+  }
+
+
+  handleAdminNav () {
+    if (this.instanceOfInstitute(this.item)) {
+      this.store.dispatch(SetInstituteAction({payload: this.item}));
+      this.router.navigateByUrl(`/institute/${this.item._id}/admin`);
     }
   }
 

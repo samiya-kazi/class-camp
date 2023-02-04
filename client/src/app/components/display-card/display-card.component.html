@@ -11,6 +11,6 @@
     <p *ngFor="let clss of classes">{{clss.name}}</p>
   </mat-card-content>
   <mat-card-actions *ngIf="isAdmin">
-    <button [routerLink]="'/institute/' + item._id + '/admin'" mat-button>Admin Panel</button>
+    <button mat-button (click)="handleAdminNav()">Admin Panel</button>
   </mat-card-actions>
 </mat-card>
