@@ -8,6 +8,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 
@@ -22,7 +23,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatSidenavModule,
     MatCardModule,
     MatChipsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatExpansionModule
   ],
   exports: [
     MatInputModule,
@@ -32,7 +34,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatSidenavModule,
     MatCardModule,
     MatChipsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatExpansionModule
   ]
 })
 export class MaterialModule { }

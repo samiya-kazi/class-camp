@@ -7,16 +7,22 @@
   <mat-card-content>
     <p>{{post.content}}</p>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-button color="primary" (click)="toggleHide()">Comments ({{post.comments.length}})</button>
-  </mat-card-actions>
-  <mat-card-content *ngIf="!hide">
-    <app-comment-card *ngFor="let comment of post.comments" [comment]="comment"></app-comment-card>
-    <div *ngIf="!post.comments.length">No comments for this post.</div>
-    <mat-form-field appearance="outline">
-      <mat-label>Comment</mat-label>
-      <textarea matInput [formControl]='comment' placeholder="Leave a comment"></textarea>
-    </mat-form-field>
-    <button (click)="handleSubmit()">Comment</button>
+  <mat-card-content>
+    <mat-accordion>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Comments ({{post.comments.length}})
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-comment-card *ngFor="let comment of post.comments" [comment]="comment"></app-comment-card>
+        <div *ngIf="!post.comments.length">No comments for this post.</div>
+        <mat-form-field appearance="outline">
+          <mat-label>Comment</mat-label>
+          <textarea matInput [formControl]='comment' placeholder="Leave a comment"></textarea>
+        </mat-form-field>
+        <button (click)="handleSubmit()">Comment</button>
+      </mat-expansion-panel>
+    </mat-accordion>
   </mat-card-content>
 </mat-card>
