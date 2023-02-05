@@ -1,6 +1,7 @@
 const { Class } = require("../models/class");
 const { InstituteUser } = require("../models/instituteUser");
 const { checkIfUserExists } = require('../util/helper')
+const ObjectId = require('mongoose').Types.ObjectId;
 
 async function postClass (req, res) {
   try {

@@ -20,6 +20,10 @@ export class ApiClientService {
     return this.http.get<InstituteUser[]>(this.rootUrl + '/institute');
   }
 
+  getInstituteById (id: string) : Observable<Institute> {
+    return this.http.get<Institute>(this.rootUrl + '/institute/' + id);
+  }
+
   getClasses (id : string) : Observable<InstituteClass[]> {
     return this.http.get<InstituteClass[]>(this.rootUrl + '/class/institute/' + id);
   }

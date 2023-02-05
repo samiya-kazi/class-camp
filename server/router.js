@@ -13,6 +13,7 @@ router.post('/login', userController.login);
 /* Institute Routes */
 router.post('/institute', authMiddleware, instituteController.postInstitute);
 router.get('/institute', authMiddleware, instituteController.getInstitute);
+router.get('/institute/:id', authMiddleware, instituteController.getInstituteById);
 
 /* Institute User Routes */
 router.post('/institute/user/:type', authMiddleware, adminMiddleware, instituteController.addUser);

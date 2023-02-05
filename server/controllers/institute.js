@@ -1,12 +1,25 @@
 const { Institute } = require("../models/institute");
 const { User } = require("../models/user");
 const { InstituteUser } = require("../models/instituteUser");
+const ObjectId = require('mongoose').Types.ObjectId;
 
 
 async function getInstitute (req, res) {
   try {
     const institutes = await InstituteUser.find({ user: req.user });
     res.status(200).send(institutes);
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
+}
+
+
+async function getInstituteById (req, res) {
+  try {
+    const { id } = req.params;
+    const institute = await Institute.findById(id);
+    res.status(200).send(institute);
   } catch (error) {
     res.status(500).send(error);
     console.log(error);
@@ -92,7 +105,8 @@ async function getUsersByType (req, res) {
 
 
 module.exports = {  
-  getInstitute,   
+  getInstitute,
+  getInstituteById,   
   postInstitute,
   addUser,
   getAllUsers,

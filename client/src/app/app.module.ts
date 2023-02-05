@@ -26,6 +26,8 @@ import { PostCardComponent } from './components/post-card/post-card.component';
 import { CommentCardComponent } from './components/comment-card/comment-card.component';
 import { CreateInstitutePageComponent } from './pages/create-institute-page/create-institute-page.component';
 import { InstituteAdminPageComponent } from './pages/institute-admin-page/institute-admin-page.component';
+import { ClassMembersManagerComponent } from './components/class-members-manager/class-members-manager.component';
+import { UserCardComponent } from './components/user-card/user-card.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { InstituteAdminPageComponent } from './pages/institute-admin-page/instit
     CommentCardComponent,
     CreateInstitutePageComponent,
     InstituteAdminPageComponent,
+    ClassMembersManagerComponent,
+    UserCardComponent,
   ],
   imports: [
     BrowserModule,

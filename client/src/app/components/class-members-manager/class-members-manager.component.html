@@ -1,0 +1,42 @@
+<form [formGroup]="classForm">
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Class</mat-label>
+    <mat-select formControlName='class'>
+      <mat-option *ngFor="let item of classes" [value]="item">{{item.name}}</mat-option>
+    </mat-select>
+    <mat-hint>Select a class to view members</mat-hint>
+  </mat-form-field>
+</form>
+<div *ngIf="selectedClass.name !== 'default'">
+  <div class="example-container">
+    <h2>Teachers</h2>
+  
+    <div
+      cdkDropList
+      #teacherList="cdkDropList"
+      [cdkDropListData]="selectedClass.teacher"
+      [cdkDropListConnectedTo]="[studentList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of selectedClass.teacher" cdkDrag>
+        <app-user-card [user]="item"></app-user-card>
+      </div>
+    </div>
+  </div>
+  
+  <div class="example-container">
+    <h2>Students</h2>
+  
+    <div
+      cdkDropList
+      #studentList="cdkDropList"
+      [cdkDropListData]="selectedClass.students"
+      [cdkDropListConnectedTo]="[teacherList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of selectedClass.students" cdkDrag>
+        <app-user-card [user]="item"></app-user-card>
+      </div>
+    </div>
+  </div>
+</div>
