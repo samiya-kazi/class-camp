@@ -10,33 +10,35 @@
 <div *ngIf="selectedClass.name !== 'default'">
   <div class="example-container">
     <h2>Teachers</h2>
-  
+    
     <div
-      cdkDropList
-      #teacherList="cdkDropList"
-      [cdkDropListData]="selectedClass.teacher"
-      [cdkDropListConnectedTo]="[studentList]"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of selectedClass.teacher" cdkDrag>
-        <app-user-card [user]="item"></app-user-card>
+    cdkDropList
+    #teacherList="cdkDropList"
+    [cdkDropListData]="selectedClass.teacher"
+    [cdkDropListConnectedTo]="[studentList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of selectedClass.teacher" cdkDrag>
+      <app-user-card [user]="item"></app-user-card>
       </div>
     </div>
   </div>
   
   <div class="example-container">
     <h2>Students</h2>
-  
+    
     <div
-      cdkDropList
-      #studentList="cdkDropList"
-      [cdkDropListData]="selectedClass.students"
-      [cdkDropListConnectedTo]="[teacherList]"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of selectedClass.students" cdkDrag>
-        <app-user-card [user]="item"></app-user-card>
-      </div>
+    cdkDropList
+    #studentList="cdkDropList"
+    [cdkDropListData]="selectedClass.students"
+    [cdkDropListConnectedTo]="[teacherList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of selectedClass.students" cdkDrag>
+      <app-user-card [user]="item"></app-user-card>
     </div>
   </div>
+  </div>
+  
+  <button mat-raised-button (click)="openDialog()"><mat-icon>add</mat-icon>Add user to class</button>
 </div>

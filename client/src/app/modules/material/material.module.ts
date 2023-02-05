@@ -11,6 +11,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
@@ -31,7 +32,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatExpansionModule,
     MatFormFieldModule,
     MatSelectModule,
-    DragDropModule
+    DragDropModule,
+    MatDialogModule
   ],
   exports: [
     MatInputModule,
@@ -45,7 +47,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatExpansionModule,
     MatFormFieldModule,
     MatSelectModule,
-    DragDropModule
+    DragDropModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule { }

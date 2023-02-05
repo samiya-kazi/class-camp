@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { MatDialog } from '@angular/material/dialog';
 import { InstituteClass } from 'src/app/models/class.model';
 import { User } from 'src/app/models/user.model';
 
@@ -33,7 +34,7 @@ export class ClassMembersManagerComponent implements OnInit {
   @Input() classes!: InstituteClass[];
 
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, public dialog: MatDialog) { }
 
 
   ngOnInit(): void {
@@ -55,4 +56,18 @@ export class ClassMembersManagerComponent implements OnInit {
     }
   }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogContentExampleDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
 }
+
+@Component({
+  selector: 'dialog-content',
+  templateUrl: 'dialog-content.html',
+})
+export class DialogContentExampleDialog {}
