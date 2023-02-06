@@ -1,5 +1,8 @@
 <div class="content-container">
-  <h3>Institute Members</h3>
+  <div class="panel-title">
+    <h3>Institute Members</h3>
+    <button mat-raised-button color="primary" (click)="openDialog()"><mat-icon>add</mat-icon> Add member </button>
+  </div>
   <div *ngFor="let item of instituteMembers">
     <mat-card>
       <mat-card-header>

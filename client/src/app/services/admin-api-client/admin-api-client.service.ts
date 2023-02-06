@@ -24,6 +24,10 @@ export class AdminApiClientService {
     return this.http.get<InstituteUser[]>(this.rootUrl + '/institute/' + id + '/user');
   }
 
+  addInstituteUser (email: string, type: string) : Observable<InstituteUser> {
+    return this.http.post<InstituteUser>(this.rootUrl + '/institute/user/' + type, { email, institute: this.institute });
+  }
+
   addUserToClass (classId: string, user: User) : Observable<any> {
     return this.http.put(this.rootUrl + '/class/user/' + classId, { user, institute: this.institute });
   }

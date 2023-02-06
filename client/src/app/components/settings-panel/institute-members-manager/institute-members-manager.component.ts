@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { MatDialog } from '@angular/material/dialog';
 import { InstituteUser } from 'src/app/models/institute-user.model';
 import { Institute } from 'src/app/models/institute.model';
 import { State } from 'src/app/models/state.model';
 import { AdminApiClientService } from 'src/app/services/admin-api-client/admin-api-client.service';
+import { AddInstituteMembersFormComponent } from '../add-institute-members-form/add-institute-members-form.component';
 
 @Component({
   selector: 'app-institute-members-manager',
@@ -17,7 +19,8 @@ export class InstituteMembersManagerComponent implements OnInit {
 
   constructor(
     private store: Store<State>,
-    private adminApi: AdminApiClientService
+    private adminApi: AdminApiClientService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -37,4 +40,11 @@ export class InstituteMembersManagerComponent implements OnInit {
     })
   }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(AddInstituteMembersFormComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }

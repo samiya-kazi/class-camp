@@ -1,0 +1,19 @@
+<form>
+  <h2>Add Institute Member</h2>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Email</mat-label>
+    <input matInput type="email" [formControl]="email"/>
+    <mat-error *ngIf="email?.errors?.['email']">Email is invalid</mat-error>
+    <mat-error *ngIf="email?.errors?.['required']">Email is required</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Role</mat-label>
+    <mat-select [formControl]="role">
+      <mat-option value="teacher">Teacher</mat-option>
+      <mat-option value="student">Student</mat-option>
+      <mat-option value="admin">Admin</mat-option>
+    </mat-select>
+    <mat-error *ngIf="role?.errors?.['required']">Role is required</mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="handleSubmit()">Add member</button>
+</form>
