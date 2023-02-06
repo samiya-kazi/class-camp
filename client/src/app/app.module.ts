@@ -30,6 +30,8 @@ import { InstituteAdminPageComponent } from './pages/institute-admin-page/instit
 import { ClassMembersManagerComponent } from './components/class-members-manager/class-members-manager.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { AddClassMemberFormComponent } from './components/class-members-manager/add-class-member-form/add-class-member-form.component';
+import { SettingsPanelComponent } from './components/settings-panel/settings-panel.component';
+import { InstituteMembersManagerComponent } from './components/settings-panel/institute-members-manager/institute-members-manager.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { AddClassMemberFormComponent } from './components/class-members-manager/
     ClassMembersManagerComponent,
     UserCardComponent,
     AddClassMemberFormComponent,
+    SettingsPanelComponent,
+    InstituteMembersManagerComponent,
   ],
   imports: [
     BrowserModule,

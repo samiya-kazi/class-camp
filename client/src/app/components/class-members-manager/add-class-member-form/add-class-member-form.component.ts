@@ -29,8 +29,10 @@ export class AddClassMemberFormComponent implements OnInit {
 
   ngOnInit(): void {
     const institute$ = this.store.select(store => store.institute);
-    institute$.subscribe(institute => this.institute = institute);
-    this.getInstituteUsers();
+    institute$.subscribe(institute => {
+      this.institute = institute;
+      if (this.institute._id !== '0') this.getInstituteUsers();
+    });
 
     const class$ = this.store.select(store => store.class);
     class$.subscribe(classArr => this.class = classArr[0]);
@@ -46,7 +48,6 @@ export class AddClassMemberFormComponent implements OnInit {
 
   getInstituteUsers () {
     this.adminApi.getInstituteMembers(this.institute._id).subscribe(members => {
-      console.log(members);
       this.instituteMembers = members;
     })
   }
