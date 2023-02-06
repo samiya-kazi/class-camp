@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { AdminApiClientService } from 'src/app/services/admin-api-client/admin-api-client.service';
 import { NewInstituteMemberService } from 'src/app/services/new-institute-member/new-institute-member.service';
 
@@ -19,6 +20,7 @@ export class AddInstituteMembersFormComponent implements OnInit {
   constructor(
     private adminApi: AdminApiClientService,
     private dialog: MatDialog,
+    private toastr: ToastrService,
     private newMember: NewInstituteMemberService
   ) { }
 
@@ -33,6 +35,7 @@ export class AddInstituteMembersFormComponent implements OnInit {
           this.successMessage = 'User had been successfully added.';
           this.errorMessage = '';
           this.dialog.closeAll();
+          this.toastr.success(newUser.user.firstName + ' ' + newUser.user.firstName, 'New member added successfully', {positionClass: 'toast-bottom-right'});
         },
         error: error => {
           this.successMessage = '';

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { AdminApiClientService } from 'src/app/services/admin-api-client/admin-api-client.service';
 import { UpdateInstituteClassesService } from 'src/app/services/update-institute-classes/update-institute-classes.service';
 
@@ -23,7 +24,8 @@ export class AddClassFormComponent implements OnInit {
     private fb: FormBuilder,
     private adminApi: AdminApiClientService,
     private updateClasses: UpdateInstituteClassesService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -41,6 +43,7 @@ export class AddClassFormComponent implements OnInit {
           this.errorMessage = '';
           this.updateClasses.setNewClass(clss);
           this.dialog.closeAll();
+          this.toastr.success(clss.name , 'New class added successfully', {positionClass: 'toast-bottom-right'});
         },
         error: error => {
           this.errorMessage = error.error

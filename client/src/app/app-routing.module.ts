@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'create/institute', component: CreateInstitutePageComponent, canActivate: [AuthGuard]},
   {path: 'institute/:id/admin', component: InstituteAdminPageComponent, canActivate: [AuthGuard]},
   {path: 'class/:id', component: ClassPageComponent, canActivate: [AuthGuard]},
-  {path: '', pathMatch: 'full', redirectTo: 'login'}
+  {path: '', pathMatch: 'full', redirectTo: 'home'}
 ];
 
 @NgModule({

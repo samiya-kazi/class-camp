@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
+import { ToastrService } from 'ngx-toastr';
 import { map, Observable, startWith } from 'rxjs';
 import { InstituteClass } from 'src/app/models/class.model';
 import { InstituteUser } from 'src/app/models/institute-user.model';
@@ -28,6 +29,7 @@ export class AddClassMemberFormComponent implements OnInit {
     private adminApi: AdminApiClientService,
     private store: Store<State>,
     private updateClass: UpdateClassMembersService,
+    private toastr: ToastrService,
     private dialog: MatDialog
   ) { }
 
@@ -74,6 +76,7 @@ export class AddClassMemberFormComponent implements OnInit {
         next: clss => {
           this.updateClass.setUpdatedClass(clss);
           this.dialog.closeAll();
+          this.toastr.info('', 'New member added to class', {positionClass: 'toast-bottom-right'});
         }
       })
     }

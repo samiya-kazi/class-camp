@@ -12,6 +12,7 @@ import { ClassReducer } from './store/reducers/class.reducer';
 import { StorageTokenInterceptorService } from './services/interceptors/storage-token-interceptor/storage-token-interceptor.service';
 import { AccessTokenInterceptorService } from './services/interceptors/access-token-interceptor/access-token-interceptor.service';
 import { MaterialModule } from './modules/material/material.module';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -71,7 +72,8 @@ import { AddClassFormComponent } from './components/add-class-form/add-class-for
       institute: InstituteReducer, 
       user: UserReducer,
       class: ClassReducer
-    })
+    }),
+    ToastrModule.forRoot()
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AccessTokenInterceptorService, multi: true },
