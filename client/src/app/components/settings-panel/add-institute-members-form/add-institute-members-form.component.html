@@ -15,5 +15,8 @@
     </mat-select>
     <mat-error *ngIf="role?.errors?.['required']">Role is required</mat-error>
   </mat-form-field>
-  <button mat-raised-button color="primary" (click)="handleSubmit()">Add member</button>
+  <mat-action-row>
+    <button mat-raised-button mat-dialog-close>Close</button>
+    <button mat-raised-button color="primary" (click)="handleSubmit()">Add member</button>
+  </mat-action-row>
 </form>

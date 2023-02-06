@@ -6,6 +6,7 @@ import { Institute } from 'src/app/models/institute.model';
 import { State } from 'src/app/models/state.model';
 import { AdminApiClientService } from 'src/app/services/admin-api-client/admin-api-client.service';
 import { AddInstituteMembersFormComponent } from '../add-institute-members-form/add-institute-members-form.component';
+import { NewInstituteMemberService } from 'src/app/services/new-institute-member/new-institute-member.service';
 
 @Component({
   selector: 'app-institute-members-manager',
@@ -20,7 +21,8 @@ export class InstituteMembersManagerComponent implements OnInit {
   constructor(
     private store: Store<State>,
     private adminApi: AdminApiClientService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private newMember: NewInstituteMemberService
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +32,10 @@ export class InstituteMembersManagerComponent implements OnInit {
       this.institute = institute;
       if (this.institute._id !== '0') this.getInstituteUsers();
     });
+
+    this.newMember.getNewInstituteMember().subscribe(user => {
+      this.instituteMembers.push(user);
+    })
 
   }
 
