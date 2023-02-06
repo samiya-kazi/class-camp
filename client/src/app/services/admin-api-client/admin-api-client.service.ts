@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { InstituteClass } from 'src/app/models/class.model';
 import { InstituteUser } from 'src/app/models/institute-user.model';
 import { Institute } from 'src/app/models/institute.model';
 import { State } from 'src/app/models/state.model';
@@ -28,7 +29,7 @@ export class AdminApiClientService {
     return this.http.post<InstituteUser>(this.rootUrl + '/institute/user/' + type, { email, institute: this.institute });
   }
 
-  addUserToClass (classId: string, user: User) : Observable<any> {
-    return this.http.put(this.rootUrl + '/class/user/' + classId, { user, institute: this.institute });
+  addUserToClass (classId: string, user: User) : Observable<InstituteClass> {
+    return this.http.put<InstituteClass>(this.rootUrl + '/class/user/' + classId, { user, institute: this.institute });
   }
 }

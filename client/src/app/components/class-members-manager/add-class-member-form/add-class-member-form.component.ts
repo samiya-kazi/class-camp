@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { map, Observable, startWith } from 'rxjs';
 import { InstituteClass } from 'src/app/models/class.model';
@@ -7,6 +8,7 @@ import { InstituteUser } from 'src/app/models/institute-user.model';
 import { Institute } from 'src/app/models/institute.model';
 import { State } from 'src/app/models/state.model';
 import { AdminApiClientService } from 'src/app/services/admin-api-client/admin-api-client.service';
+import { UpdateClassMembersService } from 'src/app/services/update-class-members/update-class-members.service';
 
 @Component({
   selector: 'app-add-class-member-form',
@@ -24,7 +26,9 @@ export class AddClassMemberFormComponent implements OnInit {
 
   constructor(
     private adminApi: AdminApiClientService,
-    private store: Store<State>
+    private store: Store<State>,
+    private updateClass: UpdateClassMembersService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -66,8 +70,12 @@ export class AddClassMemberFormComponent implements OnInit {
 
   handleSubmit () {
     if (this.myControl.value && typeof this.myControl.value !== 'string') {
-      console.log(this.class)
-      this.adminApi.addUserToClass(this.class._id, this.myControl.value.user).subscribe(res => console.log(res))
+      this.adminApi.addUserToClass(this.class._id, this.myControl.value.user).subscribe({
+        next: clss => {
+          this.updateClass.setUpdatedClass(clss);
+          this.dialog.closeAll();
+        }
+      })
     }
   }
 

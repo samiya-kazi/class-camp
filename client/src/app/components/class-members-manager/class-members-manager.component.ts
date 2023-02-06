@@ -8,6 +8,7 @@ import { User } from 'src/app/models/user.model';
 import { State } from 'src/app/models/state.model';
 import { Store } from '@ngrx/store';
 import { SetClassAction } from 'src/app/store/actions/class.action';
+import { UpdateClassMembersService } from 'src/app/services/update-class-members/update-class-members.service';
 
 @Component({
   selector: 'app-class-members-manager',
@@ -41,7 +42,8 @@ export class ClassMembersManagerComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private store: Store<State>, 
-    public dialog: MatDialog
+    private dialog: MatDialog,
+    private updateClass: UpdateClassMembersService
   ) { }
 
 
@@ -49,7 +51,10 @@ export class ClassMembersManagerComponent implements OnInit {
     this.classForm.valueChanges.subscribe(values => {
       this.selectedClass = values.class;
       this.store.dispatch(SetClassAction({payload: this.selectedClass}));
-    })
+    });
+
+
+    this.updateClass.getUpdatedClass().subscribe(clss => this.selectedClass = clss);
   }
 
   drop(event: CdkDragDrop<User[]>) {
