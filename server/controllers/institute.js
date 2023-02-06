@@ -71,12 +71,12 @@ async function addUser (req, res) {
 
 async function getAllUsers (req, res) {
   try {
-    const { institute } = req.body;
-    const checkAdmin = await InstituteUser.find({'user._id': req.user._id, 'institute._id': institute._id});
+    const { id } = req.params;
+    const checkAdmin = await InstituteUser.find({'user._id': req.user._id, 'institute._id': id});
     if (!checkAdmin.length) {
       res.status(401).send(`You are not authorized to view the users in this institute.`);
     } else {
-      const users = await InstituteUser.find({'institute._id': institute._id}, {user: 1, type: 1});
+      const users = await InstituteUser.find({'institute._id': id}, {user: 1, type: 1});
       res.status(200).send(users);
     }
   } catch (error) {

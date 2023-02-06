@@ -17,7 +17,7 @@ router.get('/institute/:id', authMiddleware, instituteController.getInstituteByI
 
 /* Institute User Routes */
 router.post('/institute/user/:type', authMiddleware, adminMiddleware, instituteController.addUser);
-router.get('/institute/user', authMiddleware, instituteController.getAllUsers);
+router.get('/institute/:id/user', authMiddleware, instituteController.getAllUsers);
 router.get('/institute/user/:type', authMiddleware, instituteController.getUsersByType);
 
 /* Class Routes */

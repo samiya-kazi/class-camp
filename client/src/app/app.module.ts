@@ -4,10 +4,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { StoreModule } from '@ngrx/store';
-import { InstituteReducer } from './store/reducers/institute.reducer';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InstituteReducer } from './store/reducers/institute.reducer';
 import { UserReducer } from './store/reducers/user.reducer';
+import { ClassReducer } from './store/reducers/class.reducer';
 import { StorageTokenInterceptorService } from './services/interceptors/storage-token-interceptor/storage-token-interceptor.service';
 import { AccessTokenInterceptorService } from './services/interceptors/access-token-interceptor/access-token-interceptor.service';
 import { MaterialModule } from './modules/material/material.module';
@@ -28,6 +29,7 @@ import { CreateInstitutePageComponent } from './pages/create-institute-page/crea
 import { InstituteAdminPageComponent } from './pages/institute-admin-page/institute-admin-page.component';
 import { ClassMembersManagerComponent } from './components/class-members-manager/class-members-manager.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
+import { AddClassMemberFormComponent } from './components/class-members-manager/add-class-member-form/add-class-member-form.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,7 @@ import { UserCardComponent } from './components/user-card/user-card.component';
     InstituteAdminPageComponent,
     ClassMembersManagerComponent,
     UserCardComponent,
+    AddClassMemberFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,11 @@ import { UserCardComponent } from './components/user-card/user-card.component';
     ReactiveFormsModule,
     HttpClientModule, 
     MaterialModule,
-    StoreModule.forRoot({institute: InstituteReducer, user: UserReducer})
+    StoreModule.forRoot({
+      institute: InstituteReducer, 
+      user: UserReducer,
+      class: ClassReducer
+    })
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AccessTokenInterceptorService, multi: true },
