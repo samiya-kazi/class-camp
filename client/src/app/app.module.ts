@@ -33,6 +33,7 @@ import { AddClassMemberFormComponent } from './components/class-members-manager/
 import { SettingsPanelComponent } from './components/settings-panel/settings-panel.component';
 import { InstituteMembersManagerComponent } from './components/settings-panel/institute-members-manager/institute-members-manager.component';
 import { AddInstituteMembersFormComponent } from './components/settings-panel/add-institute-members-form/add-institute-members-form.component';
+import { AddClassFormComponent } from './components/add-class-form/add-class-form.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { AddInstituteMembersFormComponent } from './components/settings-panel/ad
     SettingsPanelComponent,
     InstituteMembersManagerComponent,
     AddInstituteMembersFormComponent,
+    AddClassFormComponent,
   ],
   imports: [
     BrowserModule,

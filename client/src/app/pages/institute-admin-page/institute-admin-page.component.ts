@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { AddClassFormComponent } from 'src/app/components/add-class-form/add-class-form.component';
 import { InstituteClass } from 'src/app/models/class.model';
 import { Institute } from 'src/app/models/institute.model';
 import { State } from 'src/app/models/state.model';
 import { ApiClientService } from 'src/app/services/api-client/api-client.service';
+import { UpdateInstituteClassesService } from 'src/app/services/update-institute-classes/update-institute-classes.service';
 import { SetInstituteAction } from 'src/app/store/actions/institute.action';
 
 @Component({
@@ -20,8 +23,10 @@ export class InstituteAdminPageComponent implements OnInit {
   constructor(
     private store: Store<State>,
     private api: ApiClientService,
-    private route: ActivatedRoute
-    ) { }
+    private route: ActivatedRoute,
+    private updateClasses: UpdateInstituteClassesService,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
     
@@ -35,6 +40,8 @@ export class InstituteAdminPageComponent implements OnInit {
     if (id) {
       this.getInstitute(id);
     };
+
+    this.updateClasses.getNewClass().subscribe(clss => this.classes.push(clss));
   }
 
   getClasses () {
@@ -48,6 +55,14 @@ export class InstituteAdminPageComponent implements OnInit {
     this.api.getInstituteById(id).subscribe(institute => {
       this.institute = institute;
       this.store.dispatch(SetInstituteAction({payload: this.institute}));
+    });
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(AddClassFormComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
     });
   }
 
