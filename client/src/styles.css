@@ -24,6 +24,10 @@ body {
   width: 100%;
 }
 
+.content-container {
+  margin-top: 1%;
+}
+
 .card-holder {
   display: flex;
   flex-wrap: wrap;

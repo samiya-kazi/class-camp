@@ -22,6 +22,18 @@
 }
 
 a {
+  display: flex;
+  align-items: center;
   text-decoration: none;
   color: white;
+}
+
+.logo-svg {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.logo {
+  font-family: 'Lobster';
+  font-size: larger;
 }

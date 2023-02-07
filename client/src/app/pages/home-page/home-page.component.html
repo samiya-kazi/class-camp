@@ -7,7 +7,7 @@
       <app-display-card *ngFor="let institute of adminInstitutes" [item]="institute" [isAdmin]="true"></app-display-card>
     </div>
 
-    <h3>Institutions you've been added to</h3>
+    <h3 *ngIf="otherInstitutes.length">Institutions you've been added to</h3>
     <div class="card-holder">
       <app-display-card *ngFor="let institute of otherInstitutes" [item]="institute" [isAdmin]="false"></app-display-card>
     </div>
