@@ -41,7 +41,10 @@ export class InstituteAdminPageComponent implements OnInit {
       this.getInstitute(id);
     };
 
-    this.updateClasses.getNewClass().subscribe(clss => this.classes.push(clss));
+    this.updateClasses.getNewClass().subscribe(clss => this.classes.push(clss)); 
+    this.updateClasses.getRemoveClass().subscribe(clss => {
+      this.classes = this.classes.filter(c => c._id !== clss._id);
+    }); 
   }
 
   getClasses () {
@@ -59,11 +62,7 @@ export class InstituteAdminPageComponent implements OnInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(AddClassFormComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    this.dialog.open(AddClassFormComponent);
   }
 
 }

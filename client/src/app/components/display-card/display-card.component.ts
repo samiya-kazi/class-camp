@@ -63,11 +63,7 @@ export class DisplayCardComponent implements OnInit {
   }
 
   handleRemoveClassClick () {
-    const dialogRef = this.dialog.open(RemoveClassDialogComponent, {data: {class: this.item}});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    this.dialog.open(RemoveClassDialogComponent, {data: {class: this.item}});
   }
 
 }

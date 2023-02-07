@@ -1,6 +1,14 @@
-<div class="dialog">Are you sure you want to delete this class?</div>
-<div class="dialog">{{clss.name}}</div>
+<h4 class="dialog">Are you sure you want to delete this class?</h4>
+<div class="dialog">To confirm, please type in <b>{{clss.name}}</b> and click confirm.</div>
+<mat-form-field appearance="outline">
+  <input matInput [formControl]="confirmInput" placeholder="Confirm class to delete"/>
+</mat-form-field>
 <div class="action-btn">
-  <button mat-raised-button>No</button>
-  <button mat-raised-button color="warn">Yes</button>
+  <button mat-raised-button (click)="handleCancel()">Cancel</button>
+  <button mat-raised-button color="warn" 
+    [disabled]="confirmInput.value !== clss.name"
+    (click)="handleConfirm()"
+  >
+    Confirm
+  </button>
 </div>

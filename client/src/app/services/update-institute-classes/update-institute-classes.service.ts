@@ -10,12 +10,21 @@ export class UpdateInstituteClassesService {
   constructor() { }
 
   newClass = new Subject<InstituteClass>();
+  removeClass = new Subject<InstituteClass>();
 
   getNewClass () {
     return this.newClass;
   }
 
+  getRemoveClass () {
+    return this.removeClass;
+  }
+
   setNewClass (clss: InstituteClass) {
     this.newClass.next(clss);
+  }
+
+  deleteClass (clss: InstituteClass) {
+    this.removeClass.next(clss)
   }
 }
