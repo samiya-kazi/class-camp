@@ -6,7 +6,7 @@
     <mat-card-title>{{item.name}}</mat-card-title>
     <mat-card-subtitle>{{instanceOfInstitute(item) ? item.type : 'Section:' + item.section}}</mat-card-subtitle>
   </mat-card-header>
-  <img (click)="onClick()" mat-card-image src="https://codeop.tech/wp-content/uploads/2021/12/img1-3.jpg" alt="Photo of a someone on a laptop">
+  <img (click)="onClick()" mat-card-image [src]="item.img_url.length ? item.img_url :'https://codeop.tech/wp-content/uploads/2021/12/img1-3.jpg'" alt="Institute photo">
   <mat-card-content (click)="onClick()">
     <p *ngFor="let clss of classes">{{clss.name}}</p>
   </mat-card-content>

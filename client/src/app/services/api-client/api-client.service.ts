@@ -40,7 +40,7 @@ export class ApiClientService {
     return this.http.post<Comment[]>(this.rootUrl + '/post/' + postId + '/comment', {content});
   }
 
-  addInstitute (name: string, type: string, description?: string | null) : Observable<Institute>{
-    return this.http.post<Institute>(this.rootUrl + '/institute', {name, type, description});
+  addInstitute (name: string, type: string, description?: string | null, img_url?: string | null) : Observable<Institute>{
+    return this.http.post<Institute>(this.rootUrl + '/institute', {name, type, description, img_url});
   }
 }

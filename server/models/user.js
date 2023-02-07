@@ -19,7 +19,6 @@ const userSchema = new Schema({
   },
   profile_pic_url: {
     type: String,
-    required: true,
     default: ''
   }
 });

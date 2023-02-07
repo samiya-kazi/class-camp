@@ -15,6 +15,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { NgxMatFileInputModule } from '@angular-material-components/file-input';
+
 
 
 
@@ -35,7 +37,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatSelectModule,
     DragDropModule,
     MatDialogModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    NgxMatFileInputModule
   ],
   exports: [
     MatInputModule,
@@ -51,7 +54,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatSelectModule,
     DragDropModule,
     MatDialogModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    NgxMatFileInputModule
   ]
 })
 export class MaterialModule { }

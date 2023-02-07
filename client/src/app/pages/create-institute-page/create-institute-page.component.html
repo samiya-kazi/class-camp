@@ -18,6 +18,8 @@
     <textarea matInput formControlName="description"></textarea>
   </mat-form-field>
 
+  <app-file-input (fileUploadEvent)="handleFileUpload($event)"></app-file-input>
+
   <mat-action-row class="button-row">
     <button mat-raised-button mat-dialog-close>Close</button>
     <button mat-raised-button color="primary">Submit</button>

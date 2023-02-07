@@ -29,8 +29,8 @@ async function getInstituteById (req, res) {
 
 async function postInstitute (req, res) {
   try {
-    const { name, type } = req.body;
-    const newInstitute = await Institute.create({name, type});
+    const { name, type, description, img_url } = req.body;
+    const newInstitute = await Institute.create({name, type, description, img_url});
     const newAdmin = await InstituteUser.create({user: req.user, type: 'admin', institute: newInstitute});
 
     res.status(201).send(newInstitute);

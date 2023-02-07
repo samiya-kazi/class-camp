@@ -10,7 +10,8 @@ export class AccessTokenInterceptorService implements HttpInterceptor {
   constructor() { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('accessToken');
-    if (token) {
+    console.log(req.headers)
+    if (token && !req.url.includes('cloudinary')) {
       const clonedReq = req.clone({setHeaders: {'Authorization': token}});
       return next.handle(clonedReq);
     } else return next.handle(req)

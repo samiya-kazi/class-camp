@@ -17,6 +17,7 @@ export class CreateInstitutePageComponent implements OnInit {
     name: new FormControl('', [Validators.required]),
     type: new FormControl('', [Validators.required]),
     description: new FormControl(''),
+    img_url: new FormControl(''),
   })
 
   errorMessage = '';
@@ -33,8 +34,8 @@ export class CreateInstitutePageComponent implements OnInit {
   }
 
   handleSubmit () {
-    const {name, type, description } = this.newInstituteForm.value;
-    if(name && type) this.api.addInstitute(name, type, description)
+    const { name, type, description, img_url } = this.newInstituteForm.value;
+    if(name && type) this.api.addInstitute(name, type, description, img_url)
       .subscribe({
         next: (institute) => {
           this.newInstitute.setNewInstitute(institute);
@@ -45,6 +46,10 @@ export class CreateInstitutePageComponent implements OnInit {
           this.errorMessage = err.error;
         }
       });
+  }
+
+  handleFileUpload (url: string) {
+    this.newInstituteForm.get('img_url')?.setValue(url);
   }
 
   get name() {return this.newInstituteForm.get('name')};

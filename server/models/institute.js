@@ -16,7 +16,6 @@ const instituteSchema = new Schema({
   },
   img_url: {
     type: String,
-    required: true,
     default: ''
   }
 });

@@ -27,6 +27,7 @@ import { CreateInstitutePageComponent } from './pages/create-institute-page/crea
 import { AdminModule } from './modules/admin/admin.module';
 import { NavModule } from './modules/nav/nav.module';
 import { RemoveClassDialogComponent } from './components/remove-class-dialog/remove-class-dialog.component';
+import { FileInputComponent } from './components/input/file-input/file-input.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { RemoveClassDialogComponent } from './components/remove-class-dialog/rem
     CommentCardComponent,
     CreateInstitutePageComponent,
     RemoveClassDialogComponent,
+    FileInputComponent,
   ],
   imports: [
     BrowserModule,
