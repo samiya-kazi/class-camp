@@ -24,6 +24,11 @@ const classSchema = new Schema({
   students: {
     type: [userSchema],
     required: true
+  },
+  img_url: {
+    type: String,
+    required: true,
+    default: ''
   }
 });
 

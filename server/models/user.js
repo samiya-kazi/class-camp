@@ -16,6 +16,11 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
+  },
+  profile_pic_url: {
+    type: String,
+    required: true,
+    default: ''
   }
 });
 

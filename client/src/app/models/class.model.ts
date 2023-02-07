@@ -7,6 +7,7 @@ export interface InstituteClass {
   section: string,
   description: string,
   institute: Institute,
+  img_url: string,
   teacher: User[],
   students: User[]
 }
