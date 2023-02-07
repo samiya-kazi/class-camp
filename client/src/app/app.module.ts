@@ -26,6 +26,7 @@ import { CommentCardComponent } from './components/comment-card/comment-card.com
 import { CreateInstitutePageComponent } from './pages/create-institute-page/create-institute-page.component';
 import { AdminModule } from './modules/admin/admin.module';
 import { NavModule } from './modules/nav/nav.module';
+import { RemoveClassDialogComponent } from './components/remove-class-dialog/remove-class-dialog.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { NavModule } from './modules/nav/nav.module';
     PostCardComponent,
     CommentCardComponent,
     CreateInstitutePageComponent,
+    RemoveClassDialogComponent,
   ],
   imports: [
     BrowserModule,

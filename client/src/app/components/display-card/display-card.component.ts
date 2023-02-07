@@ -7,8 +7,7 @@ import { Institute } from 'src/app/models/institute.model';
 import { State } from 'src/app/models/state.model';
 import { ApiClientService } from 'src/app/services/api-client/api-client.service';
 import { SetInstituteAction } from 'src/app/store/actions/institute.action';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Inject } from '@angular/core';
+import { RemoveClassDialogComponent } from '../remove-class-dialog/remove-class-dialog.component';
 
 @Component({
   selector: 'app-display-card',
@@ -64,36 +63,11 @@ export class DisplayCardComponent implements OnInit {
   }
 
   handleRemoveClassClick () {
-    const dialogRef = this.dialog.open(RemoveClassDialog, {data: {class: this.item}});
+    const dialogRef = this.dialog.open(RemoveClassDialogComponent, {data: {class: this.item}});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   }
-
-}
-
-
-@Component({
-  selector: 'app-remove-class-dialog',
-  templateUrl: './remove-class-dialog.html',
-  styleUrls: ['./display-card.component.css']
-})
-
-export class RemoveClassDialog {
-
-  clss!: InstituteClass;
-
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
- 
- ngOnInit() {
-   // will log the entire data object
-   console.log(this.data)
-   this.clss = this.data.class;
- }
-
-  @Input() name!: string;
 
 }
