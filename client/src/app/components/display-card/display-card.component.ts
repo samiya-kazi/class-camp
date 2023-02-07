@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { InstituteClass } from 'src/app/models/class.model';
@@ -6,6 +7,8 @@ import { Institute } from 'src/app/models/institute.model';
 import { State } from 'src/app/models/state.model';
 import { ApiClientService } from 'src/app/services/api-client/api-client.service';
 import { SetInstituteAction } from 'src/app/store/actions/institute.action';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Inject } from '@angular/core';
 
 @Component({
   selector: 'app-display-card',
@@ -22,6 +25,7 @@ export class DisplayCardComponent implements OnInit {
   constructor(
     private api: ApiClientService, 
     private store: Store<State>,
+    private dialog: MatDialog,
     private router: Router
     ) { }
 
@@ -36,6 +40,10 @@ export class DisplayCardComponent implements OnInit {
 
   instanceOfInstitute(data: any): data is Institute {
     return data.type;
+  }
+
+  instanceOfClass(data: any): data is InstituteClass {
+    return data.institute;
   }
 
   onClick () {
@@ -54,5 +62,38 @@ export class DisplayCardComponent implements OnInit {
       this.router.navigateByUrl(`/institute/${this.item._id}/admin`);
     }
   }
+
+  handleRemoveClassClick () {
+    const dialogRef = this.dialog.open(RemoveClassDialog, {data: {class: this.item}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+}
+
+
+@Component({
+  selector: 'app-remove-class-dialog',
+  templateUrl: './remove-class-dialog.html',
+  styleUrls: ['./display-card.component.css']
+})
+
+export class RemoveClassDialog {
+
+  clss!: InstituteClass;
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) { }
+ 
+ ngOnInit() {
+   // will log the entire data object
+   console.log(this.data)
+   this.clss = this.data.class;
+ }
+
+  @Input() name!: string;
 
 }
