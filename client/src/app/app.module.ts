@@ -17,48 +17,29 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { BannerComponent } from './components/banner/banner.component';
-import { SideNavComponent } from './components/side-nav/side-nav.component';
-import { DisplayCardComponent } from './components/display-card/display-card.component';
 import { InstitutePageComponent } from './pages/institute-page/institute-page.component';
 import { ClassPageComponent } from './pages/class-page/class-page.component';
 import { PostCardComponent } from './components/post-card/post-card.component';
 import { CommentCardComponent } from './components/comment-card/comment-card.component';
 import { CreateInstitutePageComponent } from './pages/create-institute-page/create-institute-page.component';
-import { InstituteAdminPageComponent } from './pages/institute-admin-page/institute-admin-page.component';
-import { ClassMembersManagerComponent } from './components/class-members-manager/class-members-manager.component';
-import { UserCardComponent } from './components/user-card/user-card.component';
-import { AddClassMemberFormComponent } from './components/class-members-manager/add-class-member-form/add-class-member-form.component';
-import { SettingsPanelComponent } from './components/settings-panel/settings-panel.component';
-import { InstituteMembersManagerComponent } from './components/settings-panel/institute-members-manager/institute-members-manager.component';
-import { AddInstituteMembersFormComponent } from './components/settings-panel/add-institute-members-form/add-institute-members-form.component';
-import { AddClassFormComponent } from './components/add-class-form/add-class-form.component';
+import { AdminModule } from './modules/admin/admin.module';
+import { NavModule } from './modules/nav/nav.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    NavBarComponent,
     HomePageComponent,
     BannerComponent,
-    SideNavComponent,
-    DisplayCardComponent,
     InstitutePageComponent,
     ClassPageComponent,
     PostCardComponent,
     CommentCardComponent,
     CreateInstitutePageComponent,
-    InstituteAdminPageComponent,
-    ClassMembersManagerComponent,
-    UserCardComponent,
-    AddClassMemberFormComponent,
-    SettingsPanelComponent,
-    InstituteMembersManagerComponent,
-    AddInstituteMembersFormComponent,
-    AddClassFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +49,8 @@ import { AddClassFormComponent } from './components/add-class-form/add-class-for
     ReactiveFormsModule,
     HttpClientModule, 
     MaterialModule,
+    AdminModule,
+    NavModule,
     StoreModule.forRoot({
       institute: InstituteReducer, 
       user: UserReducer,
