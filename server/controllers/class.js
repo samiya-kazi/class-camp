@@ -42,6 +42,18 @@ async function getUserClasses (req, res) {
 }
 
 
+async function deleteClass (req, res) {
+  try {
+    const { id } = req.params;
+    const clss = await Class.findByIdAndDelete(id);
+    res.status(200).send(clss);
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
+}
+
+
 async function addUserToClass (req, res) {
   try {
     const { id } = req.params;
@@ -78,5 +90,6 @@ module.exports = {
   postClass,
   getInstituteClasses,
   getUserClasses,
+  deleteClass,
   addUserToClass
 }

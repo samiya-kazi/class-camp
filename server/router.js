@@ -24,7 +24,8 @@ router.get('/institute/user/:type', authMiddleware, instituteController.getUsers
 router.post('/class', authMiddleware, adminMiddleware, classController.postClass);
 router.get('/class/institute/:id', authMiddleware, classController.getInstituteClasses);
 router.get('/class/user/institute/:instituteId', authMiddleware, classController.getUserClasses);
-router.put('/class/user/:id', authMiddleware, adminMiddleware, classController.addUserToClass)
+router.put('/class/user/:id', authMiddleware, adminMiddleware, classController.addUserToClass);
+router.delete('/class/:id', authMiddleware, adminMiddleware, classController.deleteClass);
 
 /* Post Routes */
 router.get('/class/:classId/post', authMiddleware, postController.getPosts);
