@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddClassFormComponent } from 'src/app/components/add-class-form/add-class-form.component';
 import { AddClassMemberFormComponent } from 'src/app/components/class-members-manager/add-class-member-form/add-class-member-form.component';
@@ -12,6 +12,8 @@ import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DisplayCardComponent } from 'src/app/components/display-card/display-card.component';
 import { NavModule } from '../nav/nav.module';
+import { FileInputComponent } from 'src/app/components/input/file-input/file-input.component';
+import { SharedComponentsModule } from '../shared-components/shared-components.module';
 
 
 
@@ -25,14 +27,15 @@ import { NavModule } from '../nav/nav.module';
     InstituteMembersManagerComponent,
     AddInstituteMembersFormComponent,
     AddClassFormComponent,
-    DisplayCardComponent
+    DisplayCardComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     NavModule,
-    MaterialModule
+    MaterialModule,
+    SharedComponentsModule
   ],
   exports: [
     InstituteAdminPageComponent,
@@ -43,7 +46,10 @@ import { NavModule } from '../nav/nav.module';
     InstituteMembersManagerComponent,
     AddInstituteMembersFormComponent,
     AddClassFormComponent,
-    DisplayCardComponent
+    DisplayCardComponent,
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
   ]
 })
 export class AdminModule { }

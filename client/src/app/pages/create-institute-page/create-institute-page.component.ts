@@ -35,7 +35,9 @@ export class CreateInstitutePageComponent implements OnInit {
 
   handleSubmit () {
     const { name, type, description, img_url } = this.newInstituteForm.value;
-    if(name && type) this.api.addInstitute(name, type, description, img_url)
+    const desc = description ? description : '';
+    const img = img_url ? img_url : '';
+    if(name && type) this.api.addInstitute(name, type, desc, img)
       .subscribe({
         next: (institute) => {
           this.newInstitute.setNewInstitute(institute);

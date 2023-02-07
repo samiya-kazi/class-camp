@@ -16,6 +16,7 @@ export class AddClassFormComponent implements OnInit {
     name: new FormControl('', [Validators.required]),
     section: new FormControl('', [Validators.required]),
     description: new FormControl(''),
+    img_url: new FormControl(''),
   })
 
   errorMessage = '';
@@ -36,9 +37,10 @@ export class AddClassFormComponent implements OnInit {
 
   handleSubmit () {
     if (this.addClassForm.valid && this.addClassForm.value.name && this.addClassForm.value.section) {
-      const { name, description, section } = this.addClassForm.value;
+      const { name, description, section, img_url } = this.addClassForm.value;
       const desc = description ? description : '';
-      this.adminApi.addNewClass(name, section, desc).subscribe({
+      const img = img_url ? img_url : '';
+      this.adminApi.addNewClass(name, section, desc, img).subscribe({
         next: clss => {
           this.errorMessage = '';
           this.updateClasses.setNewClass(clss);
@@ -50,5 +52,10 @@ export class AddClassFormComponent implements OnInit {
         }
       })
     }
+  }
+
+
+  handleFileUpload (url: string) {
+    this.addClassForm.get('img_url')?.setValue(url);
   }
 }

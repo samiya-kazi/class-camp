@@ -14,8 +14,12 @@
     <mat-label>Description (Optional)</mat-label>
     <textarea matInput formControlName="description"></textarea>
   </mat-form-field>
+
+  <mat-label>Image</mat-label>
+  <app-file-input (fileUploadEvent)="handleFileUpload($event)"></app-file-input>
+
   <mat-action-row class="full-width button-row">
     <button mat-raised-button mat-dialog-close>Close</button>
-    <button mat-raised-button color="primary">Add Class</button>
+    <button mat-raised-button color="primary" [disabled]="addClassForm.invalid">Add Class</button>
   </mat-action-row>
 </form>

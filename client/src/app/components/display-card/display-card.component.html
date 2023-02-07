@@ -10,6 +10,9 @@
   <mat-card-content (click)="onClick()">
     <p *ngFor="let clss of classes">{{clss.name}}</p>
   </mat-card-content>
+  <mat-card-content>
+    {{item.description}}
+  </mat-card-content>
   <mat-card-actions>
     <button *ngIf="isAdmin" mat-button (click)="handleAdminNav()">Admin Panel</button>
     <button *ngIf="instanceOfClass(item)" mat-raised-button color="warn" (click)="handleRemoveClassClick()">Remove</button>

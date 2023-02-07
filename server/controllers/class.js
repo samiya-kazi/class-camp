@@ -5,11 +5,11 @@ const ObjectId = require('mongoose').Types.ObjectId;
 
 async function postClass (req, res) {
   try {
-    const { name, section, description, institute } = req.body;
+    const { name, section, description, institute, img_url } = req.body;
     if (!name || !institute) {
       res.status(401).send('Invalid inputs.');
     } else {
-      const clss = await Class.create({name, section, description, institute, teacher: [], students: []});
+      const clss = await Class.create({name, section, description, institute, img_url, teacher: [], students: []});
       res.status(201).send(clss);
     }
   } catch (error) {
