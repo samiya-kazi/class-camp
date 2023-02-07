@@ -9,6 +9,11 @@ const instituteSchema = new Schema({
     type: String,
     required: true
   },
+  description: {
+    type: String,
+    required: true,
+    default: ''
+  },
   img_url: {
     type: String,
     required: true,
