@@ -2,7 +2,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { SetInstituteAction, RemoveInstituteAction } from '../actions/institute.action';
 import { Institute } from 'src/app/models/institute.model';
 
-const initialState: Institute = {_id: '0', name: 'default', type: 'default'};
+const initialState: Institute = {_id: '0', name: 'default', type: 'default', description: '', img_url: ''};
 
 
 const reducer = createReducer(

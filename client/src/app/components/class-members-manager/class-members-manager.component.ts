@@ -30,7 +30,10 @@ export class ClassMembersManagerComponent implements OnInit {
       _id: '0',
       name: 'default',
       type: 'default',
+      description: '',
+      img_url: ''
     },
+    img_url: '',
     teacher: [],
     students: []
   };
