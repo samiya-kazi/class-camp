@@ -10,10 +10,10 @@ const reducer = createReducer(
   initialState,
   on(SetUserAction, (state, action) => {
     localStorage.setItem('user', JSON.stringify(action.payload));
-     return [action.payload];
+    return [action.payload];
   }),
   on(RemoveUserAction, (state, action) => {
-    return initialState;
+    return [];
   })
 );
 

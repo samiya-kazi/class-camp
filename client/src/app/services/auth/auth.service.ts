@@ -30,7 +30,7 @@ export class AuthService {
   logout () {
     localStorage.clear();
     this.store.dispatch(RemoveUserAction());
-    this.router.navigate(['']);
+    this.router.navigate(['login']);
   }
 
   isLoggedIn () {
