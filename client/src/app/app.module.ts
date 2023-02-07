@@ -28,6 +28,7 @@ import { AdminModule } from './modules/admin/admin.module';
 import { NavModule } from './modules/nav/nav.module';
 import { RemoveClassDialogComponent } from './components/remove-class-dialog/remove-class-dialog.component';
 import { FileInputComponent } from './components/input/file-input/file-input.component';
+import { MiniSpinnerComponent } from './components/loaders/mini-spinner/mini-spinner.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { FileInputComponent } from './components/input/file-input/file-input.com
     CreateInstitutePageComponent,
     RemoveClassDialogComponent,
     FileInputComponent,
+    MiniSpinnerComponent,
   ],
   imports: [
     BrowserModule,

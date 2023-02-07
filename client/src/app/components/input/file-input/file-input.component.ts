@@ -10,15 +10,18 @@ import { CloudinaryService } from 'src/app/services/cloudinary/cloudinary.servic
 export class FileInputComponent implements OnInit {
 
   fileControl = new FormControl();
+  loading: boolean = false;
   @Output() fileUploadEvent = new EventEmitter()
 
   constructor(private cloudinary: CloudinaryService) { }
 
   ngOnInit(): void {
     this.fileControl.valueChanges.subscribe(file => {
+      this.loading = true;
       this.cloudinary.cloudUpload(file, 'samiya').subscribe({
         next: (res:any) => {
           this.fileUploadEvent.emit(res.secure_url as string);
+          this.loading = false;
         }
       });
     })

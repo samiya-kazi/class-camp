@@ -22,7 +22,7 @@
 
   <mat-action-row class="button-row">
     <button mat-raised-button mat-dialog-close>Close</button>
-    <button mat-raised-button color="primary">Submit</button>
+    <button mat-raised-button color="primary" [disabled]="newInstituteForm.invalid">Submit</button>
   </mat-action-row>
 
   <div *ngIf="errorMessage.length" class="error-message">{{errorMessage}}</div>

@@ -1,4 +1,8 @@
 <div class="file-upload">
-  <ngx-mat-file-input [formControl]="fileControl" [multiple]="false" accept="image/png, image/jpeg" color="primary">
+  <ngx-mat-file-input [formControl]="fileControl" [multiple]="false" accept="image/png, image/jpeg" color="primary" [disabled]="loading">
   </ngx-mat-file-input>
+  <div *ngIf="loading">
+    <app-mini-spinner></app-mini-spinner>
+    Uploading...
+  </div>
 </div>
