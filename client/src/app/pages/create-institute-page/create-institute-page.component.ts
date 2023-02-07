@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ApiClientService } from 'src/app/services/api-client/api-client.service';
+import { NewInstituteService } from 'src/app/services/new-institute/new-institute.service';
 
 @Component({
   selector: 'app-create-institute-page',
@@ -21,7 +24,9 @@ export class CreateInstitutePageComponent implements OnInit {
   constructor(
     private fb: FormBuilder, 
     private api: ApiClientService,
-    private router: Router
+    private dialog: MatDialog,
+    private toastr: ToastrService,
+    private newInstitute: NewInstituteService
     ) { }
 
   ngOnInit(): void {
@@ -31,7 +36,11 @@ export class CreateInstitutePageComponent implements OnInit {
     const {name, type, description } = this.newInstituteForm.value;
     if(name && type) this.api.addInstitute(name, type, description)
       .subscribe({
-        next: () => {this.router.navigate(['home']);},
+        next: (institute) => {
+          this.newInstitute.setNewInstitute(institute);
+          this.dialog.closeAll();
+          this.toastr.success(institute.name, 'New Institute Created', {positionClass: 'toast-bottom-right'});
+        },
         error: err => {
           this.errorMessage = err.error;
         }
