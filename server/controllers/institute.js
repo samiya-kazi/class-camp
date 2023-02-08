@@ -41,6 +41,21 @@ async function postInstitute (req, res) {
 }
 
 
+async function editInstitute (req, res) {
+  try {
+    const { id } = req.params;
+    const { name, type, description, img_url } = req.body;
+    const newInstitute = await Institute.findByIdAndUpdate(id, {$set: {name, type, description, img_url}}, {new: true});
+
+    res.status(200).send(newInstitute);
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
+}
+
+
+
 async function addUser (req, res) {
 
   try {
@@ -108,6 +123,7 @@ module.exports = {
   getInstitute,
   getInstituteById,   
   postInstitute,
+  editInstitute,
   addUser,
   getAllUsers,
   getUsersByType

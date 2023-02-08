@@ -40,4 +40,8 @@ export class AdminApiClientService {
   deleteClass (classId: string) : Observable<InstituteClass> {
     return this.http.delete<InstituteClass>(this.rootUrl + '/class/' + classId, {body: { institute: this.institute }});
   }
+
+  editInstitute (name: string, type: string, description: string, img_url: string) : Observable<Institute> {
+    return this.http.put<Institute>(this.rootUrl + '/institute/' + this.institute._id, { name, type, description, img_url, institute: this.institute });
+  }
 }

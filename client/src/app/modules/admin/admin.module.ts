@@ -12,8 +12,8 @@ import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DisplayCardComponent } from 'src/app/components/display-card/display-card.component';
 import { NavModule } from '../nav/nav.module';
-import { FileInputComponent } from 'src/app/components/input/file-input/file-input.component';
 import { SharedComponentsModule } from '../shared-components/shared-components.module';
+import { EditInstituteFormComponent } from 'src/app/components/settings-panel/edit-institute-form/edit-institute-form.component';
 
 
 
@@ -28,6 +28,7 @@ import { SharedComponentsModule } from '../shared-components/shared-components.m
     AddInstituteMembersFormComponent,
     AddClassFormComponent,
     DisplayCardComponent,
+    EditInstituteFormComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +36,7 @@ import { SharedComponentsModule } from '../shared-components/shared-components.m
     ReactiveFormsModule,
     NavModule,
     MaterialModule,
-    SharedComponentsModule
+    SharedComponentsModule,
   ],
   exports: [
     InstituteAdminPageComponent,
@@ -47,6 +48,7 @@ import { SharedComponentsModule } from '../shared-components/shared-components.m
     AddInstituteMembersFormComponent,
     AddClassFormComponent,
     DisplayCardComponent,
+    EditInstituteFormComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
