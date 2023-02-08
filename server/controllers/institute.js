@@ -1,6 +1,7 @@
 const { Institute } = require("../models/institute");
 const { User } = require("../models/user");
 const { InstituteUser } = require("../models/instituteUser");
+const { Class } = require("../models/class")
 const ObjectId = require('mongoose').Types.ObjectId;
 
 
@@ -47,6 +48,7 @@ async function editInstitute (req, res) {
     const { name, type, description, img_url } = req.body;
     const newInstitute = await Institute.findByIdAndUpdate(id, {$set: {name, type, description, img_url}}, {new: true});
     await InstituteUser.updateMany({'institute._id': newInstitute._id}, {$set: {institute: newInstitute}})
+    await Class.updateMany({'institute._id': newInstitute._id}, {$set: {institute: newInstitute}})
 
     res.status(200).send(newInstitute);
   } catch (error) {

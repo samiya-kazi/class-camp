@@ -86,10 +86,24 @@ async function addUserToClass (req, res) {
   }
 }
 
+
+async function editClass () {
+  try {
+    const { id } = req.params;
+    const { name, type, description, img_url } = req.body;
+    const newClass = await Class.findByIdAndUpdate(id, {$set: {name, type, description, img_url}}, {new: true});
+    res.status(200).send(newClass);
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
+}
+
 module.exports = {
   postClass,
   getInstituteClasses,
   getUserClasses,
   deleteClass,
+  editClass,
   addUserToClass
 }
