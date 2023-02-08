@@ -1,0 +1,25 @@
+<form [formGroup]="editClassForm" (submit)="handleSubmit()">
+  <h2>Add New Class</h2>
+  <mat-form-field class="full-width">
+    <mat-label>Class Name</mat-label>
+    <input type="text" matInput formControlName="name">
+    <mat-error *ngIf="name?.errors?.['required']">Name is required.</mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Section</mat-label>
+    <input type="text" matInput formControlName="section">
+    <mat-error *ngIf="section?.errors?.['required']">Section is required.</mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Description (Optional)</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+
+  <mat-label>Image</mat-label>
+  <app-file-input (fileUploadEvent)="handleFileUpload($event)"></app-file-input>
+
+  <mat-action-row class="full-width button-row">
+    <button mat-raised-button mat-dialog-close>Close</button>
+    <button mat-raised-button color="primary" [disabled]="editClassForm.invalid">Add Class</button>
+  </mat-action-row>
+</form>

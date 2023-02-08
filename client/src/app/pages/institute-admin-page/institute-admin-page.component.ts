@@ -41,7 +41,18 @@ export class InstituteAdminPageComponent implements OnInit {
       this.getInstitute(id);
     };
 
-    this.updateClasses.getNewClass().subscribe(clss => this.classes.push(clss)); 
+    this.updateClasses.getNewClass().subscribe(clss => {
+      this.classes.push(clss);
+    });
+
+    this.updateClasses.getEditedClass().subscribe(clss => {
+      this.classes.forEach((c, index) => {
+        if (c._id === clss._id) {
+          this.classes[index] = clss;
+        }
+      })
+    });
+
     this.updateClasses.getRemoveClass().subscribe(clss => {
       this.classes = this.classes.filter(c => c._id !== clss._id);
     }); 

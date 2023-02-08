@@ -6,7 +6,9 @@ import { InstituteClass } from 'src/app/models/class.model';
 import { Institute } from 'src/app/models/institute.model';
 import { State } from 'src/app/models/state.model';
 import { ApiClientService } from 'src/app/services/api-client/api-client.service';
+import { RemoveClassAction, SetClassAction } from 'src/app/store/actions/class.action';
 import { SetInstituteAction } from 'src/app/store/actions/institute.action';
+import { EditClassFormComponent } from '../edit-class-form/edit-class-form.component';
 import { RemoveClassDialogComponent } from '../remove-class-dialog/remove-class-dialog.component';
 
 @Component({
@@ -64,6 +66,15 @@ export class DisplayCardComponent implements OnInit {
 
   handleRemoveClassClick () {
     this.dialog.open(RemoveClassDialogComponent, {data: {class: this.item}});
+  }
+
+  handleEditClassClick () {
+    if (this.instanceOfClass(this.item)) {
+      this.store.dispatch(SetClassAction({payload: this.item}))
+      const dialogRef = this.dialog.open(EditClassFormComponent);
+
+      dialogRef.afterClosed().subscribe(() => this.store.dispatch(RemoveClassAction()));
+    }
   }
 
 }

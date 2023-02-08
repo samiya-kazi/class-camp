@@ -14,6 +14,7 @@ import { DisplayCardComponent } from 'src/app/components/display-card/display-ca
 import { NavModule } from '../nav/nav.module';
 import { SharedComponentsModule } from '../shared-components/shared-components.module';
 import { EditInstituteFormComponent } from 'src/app/components/settings-panel/edit-institute-form/edit-institute-form.component';
+import { EditClassFormComponent } from '../../components/edit-class-form/edit-class-form.component';
 
 
 
@@ -28,7 +29,8 @@ import { EditInstituteFormComponent } from 'src/app/components/settings-panel/ed
     AddInstituteMembersFormComponent,
     AddClassFormComponent,
     DisplayCardComponent,
-    EditInstituteFormComponent
+    EditInstituteFormComponent,
+    EditClassFormComponent
   ],
   imports: [
     CommonModule,

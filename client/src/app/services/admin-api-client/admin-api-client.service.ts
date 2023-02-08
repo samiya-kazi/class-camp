@@ -44,4 +44,8 @@ export class AdminApiClientService {
   editInstitute (name: string, type: string, description: string, img_url: string) : Observable<Institute> {
     return this.http.put<Institute>(this.rootUrl + '/institute/' + this.institute._id, { name, type, description, img_url, institute: this.institute });
   }
+
+  editClass (clssId: string, name: string, section: string, description: string, img_url: string) : Observable<InstituteClass> {
+    return this.http.put<InstituteClass>(this.rootUrl + '/class/details/' + clssId, { name, section, description, img_url, institute: this.institute });
+  }
 }

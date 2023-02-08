@@ -11,6 +11,7 @@ export class UpdateInstituteClassesService {
 
   newClass = new Subject<InstituteClass>();
   removeClass = new Subject<InstituteClass>();
+  editedClass = new Subject<InstituteClass>();
 
   getNewClass () {
     return this.newClass;
@@ -20,11 +21,19 @@ export class UpdateInstituteClassesService {
     return this.removeClass;
   }
 
+  getEditedClass () {
+    return this.editedClass;
+  }
+
   setNewClass (clss: InstituteClass) {
     this.newClass.next(clss);
   }
 
   deleteClass (clss: InstituteClass) {
     this.removeClass.next(clss)
+  }
+
+  editClass (clss: InstituteClass) {
+    this.editedClass.next(clss)
   }
 }
