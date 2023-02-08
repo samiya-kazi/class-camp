@@ -46,6 +46,7 @@ async function editInstitute (req, res) {
     const { id } = req.params;
     const { name, type, description, img_url } = req.body;
     const newInstitute = await Institute.findByIdAndUpdate(id, {$set: {name, type, description, img_url}}, {new: true});
+    await InstituteUser.updateMany({'institute._id': newInstitute._id}, {$set: {institute: newInstitute}})
 
     res.status(200).send(newInstitute);
   } catch (error) {

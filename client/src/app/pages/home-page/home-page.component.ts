@@ -45,6 +45,8 @@ export class HomePageComponent implements OnInit {
       this.institutes = institutes.map(res => res.institute);
       this.adminInstitutes = institutes.filter(res => res.type === 'admin').map(res => res.institute);
       this.otherInstitutes = institutes.filter(res => res.type !== 'admin').map(res => res.institute);
+
+      console.log(this.adminInstitutes)
     });
   }
 

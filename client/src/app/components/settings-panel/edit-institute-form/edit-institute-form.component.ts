@@ -32,7 +32,11 @@ export class EditInstituteFormComponent implements OnInit {
 
   ngOnInit(): void {
     const institute$ = this.store.select(store => store.institute);
-    institute$.subscribe(institute => this.editInstituteForm.patchValue(institute));
+    institute$.subscribe(institute => {
+      this.editInstituteForm.patchValue(institute);
+
+      console.log(institute)
+    });
   }
 
   handleSubmit () {
