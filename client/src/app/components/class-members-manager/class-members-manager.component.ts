@@ -9,6 +9,7 @@ import { State } from 'src/app/models/state.model';
 import { Store } from '@ngrx/store';
 import { SetClassAction } from 'src/app/store/actions/class.action';
 import { UpdateClassMembersService } from 'src/app/services/update-class-members/update-class-members.service';
+import { AdminApiClientService } from 'src/app/services/admin-api-client/admin-api-client.service';
 
 @Component({
   selector: 'app-class-members-manager',
@@ -46,7 +47,8 @@ export class ClassMembersManagerComponent implements OnInit {
     private fb: FormBuilder,
     private store: Store<State>, 
     private dialog: MatDialog,
-    private updateClass: UpdateClassMembersService
+    private updateClass: UpdateClassMembersService,
+    private adminApi: AdminApiClientService
   ) { }
 
 
@@ -71,6 +73,14 @@ export class ClassMembersManagerComponent implements OnInit {
         event.currentIndex,
       );
     }
+  }
+
+  handleRemoveUser (user: User) {
+    this.adminApi.removeUserFromClass(this.selectedClass._id, user).subscribe({
+      next: clss => {
+        this.selectedClass = clss;
+      }
+    })
   }
 
   openDialog() {

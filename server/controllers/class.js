@@ -87,6 +87,19 @@ async function addUserToClass (req, res) {
 }
 
 
+async function removeUserFromClass (req, res) {
+  try {
+    const { id } = req.params;
+    const { user } = req.body;
+    const updatedClass = await Class.findByIdAndUpdate(id, {$pull: {teacher: {_id: user._id}, students: {_id: user._id}}}, {new: true});
+    res.status(200).send(updatedClass);
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
+}
+
+
 async function editClass (req, res) {
   try {
     const { id } = req.params;
@@ -105,5 +118,6 @@ module.exports = {
   getUserClasses,
   deleteClass,
   editClass,
-  addUserToClass
+  addUserToClass,
+  removeUserFromClass
 }

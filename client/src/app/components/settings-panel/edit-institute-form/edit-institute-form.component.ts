@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { ToastrService } from 'ngx-toastr';
 import { State } from 'src/app/models/state.model';
 import { AdminApiClientService } from 'src/app/services/admin-api-client/admin-api-client.service';
+import { SetInstituteAction } from 'src/app/store/actions/institute.action';
 
 @Component({
   selector: 'app-edit-institute-form',
@@ -34,8 +35,6 @@ export class EditInstituteFormComponent implements OnInit {
     const institute$ = this.store.select(store => store.institute);
     institute$.subscribe(institute => {
       this.editInstituteForm.patchValue(institute);
-
-      console.log(institute)
     });
   }
 
@@ -46,6 +45,7 @@ export class EditInstituteFormComponent implements OnInit {
     if(name && type) this.adminApi.editInstitute(name, type, desc, img)
       .subscribe({
         next: (institute) => {
+          this.store.dispatch(SetInstituteAction({payload: institute}));
           this.dialog.closeAll();
           this.toastr.info(institute.name, 'Instiute updated', {positionClass: 'toast-bottom-right'});
         },

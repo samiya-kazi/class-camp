@@ -12,14 +12,12 @@
     <h2>Teachers</h2>
     
     <div
-    cdkDropList
-    #teacherList="cdkDropList"
-    [cdkDropListData]="selectedClass.teacher"
-    [cdkDropListConnectedTo]="[studentList]"
-    class="example-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of selectedClass.teacher" cdkDrag>
-      <app-user-card [user]="item"></app-user-card>
+    class="example-list">
+    <div class="example-box" *ngFor="let item of selectedClass.teacher">
+      <div class="user-card">
+        <app-user-card [user]="item"></app-user-card>
+        <mat-icon (click)="handleRemoveUser(item)">delete</mat-icon>
+      </div>
       </div>
     </div>
   </div>
@@ -28,14 +26,12 @@
     <h2>Students</h2>
     
     <div
-    cdkDropList
-    #studentList="cdkDropList"
-    [cdkDropListData]="selectedClass.students"
-    [cdkDropListConnectedTo]="[teacherList]"
-    class="example-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of selectedClass.students" cdkDrag>
-      <app-user-card [user]="item"></app-user-card>
+    class="example-list">
+    <div class="example-box" *ngFor="let item of selectedClass.students">
+      <div class="user-card">
+        <app-user-card [user]="item"></app-user-card>
+        <mat-icon (click)="handleRemoveUser(item)">delete</mat-icon>
+      </div>
     </div>
   </div>
   </div>

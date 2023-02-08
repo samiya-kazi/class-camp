@@ -37,6 +37,10 @@ export class AdminApiClientService {
     return this.http.put<InstituteClass>(this.rootUrl + '/class/user/' + classId, { user, institute: this.institute });
   }
 
+  removeUserFromClass (classId: string, user: User) : Observable<InstituteClass> {
+    return this.http.put<InstituteClass>(this.rootUrl + '/class/user/' + classId + '/remove', { user, institute: this.institute });
+  }
+
   deleteClass (classId: string) : Observable<InstituteClass> {
     return this.http.delete<InstituteClass>(this.rootUrl + '/class/' + classId, {body: { institute: this.institute }});
   }
