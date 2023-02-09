@@ -6,13 +6,21 @@
     <mat-card-title>{{item.name}}</mat-card-title>
     <mat-card-subtitle>{{instanceOfInstitute(item) ? item.type : 'Section: ' + item.section}}</mat-card-subtitle>
   </mat-card-header>
-  <img (click)="onClick()" mat-card-image [src]="item.img_url.length ? item.img_url :'https://codeop.tech/wp-content/uploads/2021/12/img1-3.jpg'" alt="Institute photo">
-  <mat-card-content (click)="onClick()">
-    <p *ngFor="let clss of classes">{{clss.name}}</p>
-  </mat-card-content>
-  <mat-card-content>
-    {{item.description}}
-  </mat-card-content>
+  <div class="card-img" (click)="onClick()">
+    <img (click)="onClick()" [src]="item.img_url.length ? item.img_url : defaultImgUrl" alt="Institute photo">
+  </div>
+  <div class="info">
+    <mat-card-content>
+      {{item.description}}
+    </mat-card-content>
+    <mat-card-content (click)="onClick()">
+      <b *ngIf="classes.length && instanceOfInstitute(item)">Available Classes</b>
+      <b *ngIf="!classes.length && instanceOfInstitute(item)">No Classes Available Yet</b>
+      <ul>
+        <li *ngFor="let clss of classes">{{clss.name}}</li>
+      </ul>
+    </mat-card-content>
+  </div>
   <mat-card-actions>
     <button *ngIf="isAdmin && instanceOfInstitute(item)" mat-button (click)="handleAdminNav()">Admin Panel</button>
     <button *ngIf="isAdmin && instanceOfClass(item)" mat-raised-button (click)="handleEditClassClick()">Edit Class</button>

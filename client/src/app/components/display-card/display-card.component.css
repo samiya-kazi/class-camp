@@ -2,3 +2,46 @@
   width: 300px;
   margin: 10px;
 }
+
+.info {
+  height: 100px;
+  overflow: auto;
+  border-bottom: lightgray solid 1px;
+}
+
+.card-img {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 20px;
+  overflow: hidden;
+}
+
+img {
+  max-width: auto;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

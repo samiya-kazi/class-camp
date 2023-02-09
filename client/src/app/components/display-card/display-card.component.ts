@@ -21,6 +21,8 @@ export class DisplayCardComponent implements OnInit {
   @Input() item!: Institute | InstituteClass;
   @Input() isAdmin!: boolean;
 
+  defaultImgUrl = 'https://codeop.tech/wp-content/uploads/2021/12/img1-3.jpg';
+
   classes: InstituteClass[] = [];
 
   constructor(
@@ -35,7 +37,7 @@ export class DisplayCardComponent implements OnInit {
   }
 
   getClasses () {
-    if(this.item && !this.instanceOfInstitute(this.item))
+    if(this.item && this.instanceOfInstitute(this.item))
       this.api.getClasses(this.item._id).subscribe(classes => this.classes = classes);
   }
 
