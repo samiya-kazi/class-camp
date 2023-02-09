@@ -18,6 +18,7 @@ router.get('/institute/:id', authMiddleware, instituteController.getInstituteByI
 /* Institute User Routes */
 router.post('/institute/user/:type', authMiddleware, adminMiddleware, instituteController.addUser);
 router.get('/institute/:id/user', authMiddleware, instituteController.getAllUsers);
+router.get('/institute/:id/user/:userId', authMiddleware, instituteController.getUserRole);
 router.get('/institute/user/:type', authMiddleware, instituteController.getUsersByType);
 router.put('/institute/:id', authMiddleware, instituteController.editInstitute);
 
@@ -25,6 +26,7 @@ router.put('/institute/:id', authMiddleware, instituteController.editInstitute);
 router.post('/class', authMiddleware, adminMiddleware, classController.postClass);
 router.get('/class/institute/:id', authMiddleware, classController.getInstituteClasses);
 router.get('/class/user/institute/:instituteId', authMiddleware, classController.getUserClasses);
+router.get('/class/:id', authMiddleware, classController.getClassById);
 router.put('/class/user/:id', authMiddleware, adminMiddleware, classController.addUserToClass);
 router.put('/class/user/:id/remove', authMiddleware, adminMiddleware, classController.removeUserFromClass);
 router.put('/class/details/:id', authMiddleware, adminMiddleware, classController.editClass);

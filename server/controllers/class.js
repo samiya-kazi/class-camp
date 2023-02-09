@@ -41,6 +41,16 @@ async function getUserClasses (req, res) {
   }
 }
 
+async function getClassById (req, res) {
+  try {
+    const { id } = req.params;
+    const clss = await Class.findById(id);
+    res.status(200).send(clss);
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
+}
 
 async function deleteClass (req, res) {
   try {
@@ -116,6 +126,7 @@ module.exports = {
   postClass,
   getInstituteClasses,
   getUserClasses,
+  getClassById,
   deleteClass,
   editClass,
   addUserToClass,

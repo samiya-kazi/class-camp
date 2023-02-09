@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Post } from 'src/app/models/post.model';
+import { State } from 'src/app/models/state.model';
+import { User } from 'src/app/models/user.model';
 import { ApiClientService } from 'src/app/services/api-client/api-client.service';
+import { SetClassAction } from 'src/app/store/actions/class.action';
+import { SetInstituteAction } from 'src/app/store/actions/institute.action';
 
 @Component({
   selector: 'app-class-page',
@@ -16,10 +21,26 @@ export class ClassPageComponent implements OnInit {
 
   post = new FormControl('', [Validators.required]);
 
-  constructor(private route: ActivatedRoute, private api: ApiClientService) { }
+  constructor(
+    private store: Store<State>,
+    private route: ActivatedRoute, 
+    private api: ApiClientService
+  ) { }
 
   ngOnInit(): void {
+    
+    const class$ = this.store.select(store => store.class);
+    class$.subscribe(clssArr => {
+
+      this.classId = clssArr[0]._id;
+      this.getPosts(); 
+    });
+
     this.classId = this.route.snapshot.paramMap.get('id');
+    this.api.getClassById(this.classId!).subscribe(clss => {
+      this.store.dispatch(SetClassAction({payload: clss}));
+      this.store.dispatch(SetInstituteAction({payload: clss.institute}));
+    });
     this.getPosts();
   }
 

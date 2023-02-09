@@ -45,17 +45,11 @@ export class HomePageComponent implements OnInit {
       this.institutes = institutes.map(res => res.institute);
       this.adminInstitutes = institutes.filter(res => res.type === 'admin').map(res => res.institute);
       this.otherInstitutes = institutes.filter(res => res.type !== 'admin').map(res => res.institute);
-
-      console.log(this.adminInstitutes)
     });
   }
 
   handleNewInstituteClick () {
-    const dialogRef = this.dialog.open(CreateInstitutePageComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    this.dialog.open(CreateInstitutePageComponent);
   }
 
 }

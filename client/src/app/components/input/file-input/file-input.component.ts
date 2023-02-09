@@ -18,9 +18,12 @@ export class FileInputComponent implements OnInit {
   ngOnInit(): void {
     this.fileControl.valueChanges.subscribe(file => {
       this.loading = true;
-      this.cloudinary.cloudUpload(file, 'samiya').subscribe({
+      this.cloudinary.cloudUpload(file, file.name).subscribe({
         next: (res:any) => {
           this.fileUploadEvent.emit(res.secure_url as string);
+          this.loading = false;
+        },
+        error: error => {
           this.loading = false;
         }
       });

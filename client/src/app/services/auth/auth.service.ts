@@ -5,6 +5,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { State } from 'src/app/models/state.model';
 import { User } from 'src/app/models/user.model';
+import { RemoveClassAction } from 'src/app/store/actions/class.action';
+import { RemoveInstituteAction } from 'src/app/store/actions/institute.action';
 import { RemoveUserAction } from 'src/app/store/actions/user.action';
 
 @Injectable({
@@ -30,6 +32,8 @@ export class AuthService {
   logout () {
     localStorage.clear();
     this.store.dispatch(RemoveUserAction());
+    this.store.dispatch(RemoveClassAction());
+    this.store.dispatch(RemoveInstituteAction({payload: undefined}));
     this.router.navigate(['login']);
   }
 

@@ -122,6 +122,18 @@ async function getUsersByType (req, res) {
 }
 
 
+async function getUserRole (req, res) {
+  try {
+    const { id, userId } = req.params;
+    const instituteRole = await InstituteUser.findOne({'institute._id': id, 'user._id': userId});
+    res.status(200).send(instituteRole);
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
+}
+
+
 module.exports = {  
   getInstitute,
   getInstituteById,   
@@ -129,5 +141,6 @@ module.exports = {
   editInstitute,
   addUser,
   getAllUsers,
-  getUsersByType
+  getUsersByType,
+  getUserRole
 }

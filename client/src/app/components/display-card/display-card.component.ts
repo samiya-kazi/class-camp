@@ -53,9 +53,9 @@ export class DisplayCardComponent implements OnInit {
       this.router.navigateByUrl(`/institute/${this.item._id}`);
     } else {
       this.router.navigateByUrl(`/class/${this.item._id}`);
+      this.store.dispatch(SetClassAction({payload: this.item}))
     }
   }
-
 
   handleAdminNav () {
     if (this.instanceOfInstitute(this.item)) {

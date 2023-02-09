@@ -6,6 +6,7 @@ import { InstituteUser } from 'src/app/models/institute-user.model';
 import { Post } from 'src/app/models/post.model';
 import { Comment } from 'src/app/models/comment.model';
 import { Institute } from 'src/app/models/institute.model';
+import { User } from 'src/app/models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,14 @@ export class ApiClientService {
 
   getPosts (id : string) : Observable<Post[]> {
     return this.http.get<Post[]>(this.rootUrl + '/class/' + id + '/post');
+  }
+
+  getClassById (id: string) : Observable<InstituteClass>{
+    return this.http.get<InstituteClass>(this.rootUrl + '/class/' + id);
+  }
+
+  getUserRole (userId: string, instituteId: string) : Observable<InstituteUser> {
+    return this.http.get<InstituteUser>(this.rootUrl + '/institute/' + instituteId + '/user/' + userId);
   }
 
   addPost (classId: string, content: string) : Observable<Post>{
