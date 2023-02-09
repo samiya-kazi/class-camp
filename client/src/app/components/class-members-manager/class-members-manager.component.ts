@@ -10,6 +10,7 @@ import { Store } from '@ngrx/store';
 import { SetClassAction } from 'src/app/store/actions/class.action';
 import { UpdateClassMembersService } from 'src/app/services/update-class-members/update-class-members.service';
 import { AdminApiClientService } from 'src/app/services/admin-api-client/admin-api-client.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-class-members-manager',
@@ -48,7 +49,8 @@ export class ClassMembersManagerComponent implements OnInit {
     private store: Store<State>, 
     private dialog: MatDialog,
     private updateClass: UpdateClassMembersService,
-    private adminApi: AdminApiClientService
+    private adminApi: AdminApiClientService,
+    private toastr: ToastrService
   ) { }
 
 
@@ -78,7 +80,11 @@ export class ClassMembersManagerComponent implements OnInit {
   handleRemoveUser (user: User) {
     this.adminApi.removeUserFromClass(this.selectedClass._id, user).subscribe({
       next: clss => {
+        this.toastr.info(user.firstName + ' ' + user.lastName, 'User removed from class', {positionClass: 'toast-bottom-right'})
         this.selectedClass = clss;
+      },
+      error: error => {
+        this.toastr.error(error.error, 'Error encountered', {positionClass: 'toast-bottom-right'})
       }
     })
   }
