@@ -14,7 +14,7 @@
     {{item.description}}
   </mat-card-content>
   <mat-card-actions>
-    <button *ngIf="isAdmin" mat-button (click)="handleAdminNav()">Admin Panel</button>
+    <button *ngIf="isAdmin && instanceOfInstitute(item)" mat-button (click)="handleAdminNav()">Admin Panel</button>
     <button *ngIf="isAdmin && instanceOfClass(item)" mat-raised-button (click)="handleEditClassClick()">Edit Class</button>
     <button *ngIf="isAdmin && instanceOfClass(item)" mat-raised-button color="warn" (click)="handleRemoveClassClick()">Remove</button>
   </mat-card-actions>

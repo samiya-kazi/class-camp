@@ -9,7 +9,7 @@
       <mat-tab label="Classes">
         <button mat-raised-button color="primary" (click)="openDialog()"><mat-icon>add</mat-icon> Add Class</button>
         <div class="card-holder">
-          <app-display-card *ngFor="let item of classes" [item]="item"></app-display-card>
+          <app-display-card *ngFor="let item of classes" [item]="item" [isAdmin]="true"></app-display-card>
         </div>
       </mat-tab>
       <mat-tab label="Class Member Access">
