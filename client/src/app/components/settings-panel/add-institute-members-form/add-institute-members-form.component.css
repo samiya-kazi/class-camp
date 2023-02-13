@@ -1,4 +1,19 @@
 form {
   display: flex;
   flex-direction: column;
+  min-width: 20vw;
+  align-items: center;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+}
+
+.close-btn {
+  align-self: flex-end;
 }

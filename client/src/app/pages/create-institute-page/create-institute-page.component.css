@@ -6,10 +6,18 @@ form {
   width: 30vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 }
 
 .button-row {
   display: flex;
   justify-content: space-around;
+}
+
+.close-btn {
+  align-self: flex-end;
+}
+
+.full-width {
+  width: 100%;
 }
