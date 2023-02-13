@@ -11,5 +11,9 @@ form {
 
 .button-row {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+}
+
+.close-btn {
+  align-self: flex-end;
 }

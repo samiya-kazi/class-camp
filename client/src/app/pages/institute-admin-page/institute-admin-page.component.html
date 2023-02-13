@@ -7,9 +7,11 @@
     </div>
     <mat-tab-group  mat-align-tabs="center" style="height:100vh">
       <mat-tab label="Classes">
-        <button mat-raised-button color="primary" (click)="openDialog()"><mat-icon>add</mat-icon> Add Class</button>
-        <div class="card-holder">
-          <app-display-card *ngFor="let item of classes" [item]="item" [isAdmin]="true"></app-display-card>
+        <div class="content-container">
+          <button mat-raised-button color="primary" (click)="openDialog()"><mat-icon>add</mat-icon> Add Class</button>
+          <div class="card-holder">
+            <app-display-card *ngFor="let item of classes" [item]="item" [isAdmin]="true"></app-display-card>
+          </div>
         </div>
       </mat-tab>
       <mat-tab label="Class Member Access">

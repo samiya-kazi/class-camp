@@ -11,11 +11,11 @@
   </div>
   <div class="info">
     <mat-card-content>
-      {{item.description}}
+      {{item.description.length ? item.description : "No description available"}}
     </mat-card-content>
     <mat-card-content (click)="onClick()">
       <b *ngIf="classes.length && instanceOfInstitute(item)">Available Classes</b>
-      <b *ngIf="!classes.length && instanceOfInstitute(item)">No Classes Available Yet</b>
+      <b *ngIf="!classes.length && instanceOfInstitute(item)">No Classes Available</b>
       <ul>
         <li *ngFor="let clss of classes">{{clss.name}}</li>
       </ul>

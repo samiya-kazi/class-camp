@@ -1,4 +1,5 @@
 <form [formGroup]="addClassForm" (submit)="handleSubmit()">
+  <button class="close-btn" type="button" mat-flat-button mat-dialog-close><mat-icon>close</mat-icon></button>
   <h2>Add New Class</h2>
   <mat-form-field class="full-width">
     <mat-label>Class Name</mat-label>
@@ -19,7 +20,6 @@
   <app-file-input (fileUploadEvent)="handleFileUpload($event)"></app-file-input>
 
   <mat-action-row class="full-width button-row">
-    <button mat-raised-button mat-dialog-close>Close</button>
     <button mat-raised-button color="primary" [disabled]="addClassForm.invalid">Add Class</button>
   </mat-action-row>
 </form>
