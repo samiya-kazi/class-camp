@@ -41,6 +41,18 @@ async function postAssignment (req, res) {
 }
 
 
+async function getAssignmentMarks (req, res) {
+  try {
+    const { id } = req.params;
+    const marks = await AssignmentMark.find({'assignment._id': id});
+    res.status(200).send(marks);
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
+}
+
+
 async function postAssignmentMark (req, res) {
   try {
    const { assignment, student, marksObtained } = req.body;
@@ -81,9 +93,13 @@ async function postAssignmentMark (req, res) {
   }
 }
 
+
+
+
 module.exports = {
   getAssignment,
   getAssignmentsInClass,
+  getAssignmentMarks,
   postAssignment,
   postAssignmentMark
 }
