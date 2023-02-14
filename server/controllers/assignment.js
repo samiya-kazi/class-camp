@@ -1,6 +1,7 @@
 const { Assignment } = require("../models/assignment");
 const { AssignmentMark } = require("../models/assignmentMarks");
 const { User } = require("../models/user");
+const { checkIfStudentInClass } = require("../util/helper");
 
 async function getAssignment (req, res) {
   try {
@@ -55,8 +56,22 @@ async function postAssignmentMark (req, res) {
     const { dueDate } = assignment;
     const status = 'pass';
     if (dueDate < postedDate) status = 'late';
-    const mark = await AssignmentMark.create({assignment, student, marksObtained, postedDate, status});
-    res.status(201).send(mark);
+
+    const checkStudent = await checkIfStudentInClass(assignment.classId, student);
+
+    if (checkStudent) {
+      const checkStudentMark = await AssignmentMark.find({assignment, student});
+      let mark = 0;
+  
+      if (checkStudentMark.length) {
+        mark = await AssignmentMark.findByIdAndUpdate(checkStudentMark[0]._id, {$set: {marksObtained, postedDate, status}});
+      } else {
+        mark = await AssignmentMark.create({assignment, student, marksObtained, postedDate, status});
+      }
+      res.status(201).send(mark);
+    } else {
+      res.status(403).send('Student not in class.');
+    }
    } else {
     res.status(400).send('Incorrect information.');
    }
