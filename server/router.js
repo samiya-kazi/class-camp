@@ -2,6 +2,7 @@ const instituteController = require('./controllers/institute');
 const userController = require('./controllers/user');
 const classController = require('./controllers/class');
 const postController = require('./controllers/post');
+const assignmentController = require('./controllers/assignment');
 const authMiddleware = require('./middleware/auth');
 const adminMiddleware = require('./middleware/admin');
 const router = require('express').Router();
@@ -38,6 +39,10 @@ router.post('/class/:classId/post', authMiddleware, postController.newPost);
 router.put('/post/:id', authMiddleware, postController.updatePost);
 router.delete('/post/:id', authMiddleware, postController.deletePost);
 router.post('/post/:id/comment', authMiddleware, postController.addComment);
+
+/* Assignment Routes */
+router.get('/assignment/class/:id', authMiddleware, assignmentController.getAssignmentsInClass);
+router.post('/assignment/create', authMiddleware, assignmentController.postAssignment);
 
 
 module.exports = router;

@@ -11,7 +11,7 @@ const assignmentSchema = new Schema({
     required: true
   },
   description: {
-    type: Text,
+    type: String,
     required: true
   },
   totalMarks: {
