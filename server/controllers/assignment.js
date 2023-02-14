@@ -1,4 +1,6 @@
 const { Assignment } = require("../models/assignment");
+const { AssignmentMark } = require("../models/assignmentMarks");
+const { User } = require("../models/user");
 
 async function getAssignment (req, res) {
   try {
@@ -38,8 +40,35 @@ async function postAssignment (req, res) {
 }
 
 
+async function postAssignmentMark (req, res) {
+  try {
+   const { assignment, student, marksObtained } = req.body;
+   const postedDate = new Date();
+
+   const checkAssignment = new Assignment(assignment);
+   const validateAssignment = checkAssignment.validateSync();
+
+   const checkStudent = new User(student);
+   const validateStudent = checkStudent.validateSync();
+
+   if (!validateStudent && !validateAssignment && marksObtained) {
+    const { dueDate } = assignment;
+    const status = 'pass';
+    if (dueDate < postedDate) status = 'late';
+    const mark = await AssignmentMark.create({assignment, student, marksObtained, postedDate, status});
+    res.status(201).send(mark);
+   } else {
+    res.status(400).send('Incorrect information.');
+   }
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
+}
+
 module.exports = {
   getAssignment,
   getAssignmentsInClass,
-  postAssignment
+  postAssignment,
+  postAssignmentMark
 }

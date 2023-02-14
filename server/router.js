@@ -43,6 +43,7 @@ router.post('/post/:id/comment', authMiddleware, postController.addComment);
 /* Assignment Routes */
 router.get('/assignment/class/:id', authMiddleware, assignmentController.getAssignmentsInClass);
 router.post('/assignment/create', authMiddleware, assignmentController.postAssignment);
+router.post('/assignment/submit', authMiddleware, assignmentController.postAssignmentMark);
 
 
 module.exports = router;
