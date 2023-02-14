@@ -2,6 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const router = require('./router');
+const authRouter = require('./routers/authRouter');
+const assignmentRouter = require('./routers/assignmentRouter');
+const classRouter = require('./routers/classRouter');
+const instituteRouter = require('./routers/instituteRouter');
+const postRouter = require('./routers/postRouter');
 
 require('dotenv').config();
 const PORT = process.env.PORT;
@@ -17,7 +22,12 @@ const corsConfig = {
 
 app.use(cors(corsConfig));
 app.use(express.json());
-app.use(router);
+app.use(authRouter);
+app.use(assignmentRouter);
+app.use(classRouter);
+app.use(instituteRouter);
+app.use(postRouter);
+
 
 (async function bootstrap () {
   try {
