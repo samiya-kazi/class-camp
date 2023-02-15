@@ -28,6 +28,7 @@ import { AdminModule } from './modules/admin/admin.module';
 import { NavModule } from './modules/nav/nav.module';
 import { RemoveClassDialogComponent } from './components/remove-class-dialog/remove-class-dialog.component';
 import { SharedComponentsModule } from './modules/shared-components/shared-components.module';
+import { InstituteUserReducer } from './store/reducers/instituteUser.reducer';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { SharedComponentsModule } from './modules/shared-components/shared-compo
     StoreModule.forRoot({
       institute: InstituteReducer, 
       user: UserReducer,
-      class: ClassReducer
+      class: ClassReducer,
+      instituteUser: InstituteUserReducer
     }),
     ToastrModule.forRoot()
   ],

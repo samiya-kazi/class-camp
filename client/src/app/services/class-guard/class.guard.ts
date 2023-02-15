@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { InstituteClass } from 'src/app/models/class.model';
+import { InstituteUser } from 'src/app/models/institute-user.model';
 import { State } from 'src/app/models/state.model';
 import { User } from 'src/app/models/user.model';
 
@@ -13,6 +14,7 @@ export class ClassGuard implements CanActivate {
 
   user! : User;
   clss! : InstituteClass;
+  instituteUser!: InstituteUser;
 
   constructor (private store: Store<State>, private router: Router) {
     const user$ = this.store.select(store => store.user);
@@ -25,17 +27,19 @@ export class ClassGuard implements CanActivate {
       this.clss = clssArr[0]; 
     });
 
-    console.log('User: ', this.user);
-    console.log('Class: ', this.clss);
-
+    const instituteUser$ = this.store.select(store => store.instituteUser);
+    instituteUser$.subscribe(instituteUserArr => {
+      this.instituteUser = instituteUserArr[0]; 
+    });
   }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (this.searchUser(this.clss.teacher, this.user) || (this.searchUser(this.clss.students, this.user))) {
-        return true;
-      } else {
+
+      if (this.instituteUser && this.instituteUser.type === 'admin') return true;
+      else if (this.searchUser(this.clss.teacher, this.user) || (this.searchUser(this.clss.students, this.user))) return true;
+      else {
         this.router.navigate(['home']);
         return false;
       }
