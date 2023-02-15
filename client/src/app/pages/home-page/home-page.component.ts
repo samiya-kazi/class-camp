@@ -7,6 +7,7 @@ import { User } from 'src/app/models/user.model';
 import { ApiClientService } from 'src/app/services/api-client/api-client.service';
 import { NewInstituteService } from 'src/app/services/new-institute/new-institute.service';
 import { RemoveInstituteAction } from 'src/app/store/actions/institute.action';
+import { RemoveInstituteUserAction } from 'src/app/store/actions/instituteUser.action';
 import { CreateInstitutePageComponent } from '../create-institute-page/create-institute-page.component';
 
 @Component({
@@ -34,6 +35,7 @@ export class HomePageComponent implements OnInit {
     const user$ = this.store.select(store => store.user);
     user$.subscribe(userArr => this.user = userArr[0]);
     this.store.dispatch(RemoveInstituteAction({payload: undefined}));
+    this.store.dispatch(RemoveInstituteUserAction());
 
     this.getInstitutes();
 

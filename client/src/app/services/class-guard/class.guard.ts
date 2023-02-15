@@ -38,7 +38,7 @@ export class ClassGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
       if (this.instituteUser && this.instituteUser.type === 'admin') return true;
-      else if (this.searchUser(this.clss.teacher, this.user) || (this.searchUser(this.clss.students, this.user))) return true;
+      else if (this.clss && (this.searchUser(this.clss.teacher, this.user) || (this.searchUser(this.clss.students, this.user)))) return true;
       else {
         this.router.navigate(['home']);
         return false;

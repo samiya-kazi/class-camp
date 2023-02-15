@@ -7,6 +7,7 @@ import { State } from 'src/app/models/state.model';
 import { User } from 'src/app/models/user.model';
 import { RemoveClassAction } from 'src/app/store/actions/class.action';
 import { RemoveInstituteAction } from 'src/app/store/actions/institute.action';
+import { RemoveInstituteUserAction } from 'src/app/store/actions/instituteUser.action';
 import { RemoveUserAction } from 'src/app/store/actions/user.action';
 
 @Injectable({
@@ -33,6 +34,7 @@ export class AuthService {
     localStorage.clear();
     this.store.dispatch(RemoveUserAction());
     this.store.dispatch(RemoveClassAction());
+    this.store.dispatch(RemoveInstituteUserAction());
     this.store.dispatch(RemoveInstituteAction({payload: undefined}));
     this.router.navigate(['login']);
   }
