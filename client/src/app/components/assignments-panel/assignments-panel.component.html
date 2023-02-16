@@ -1,5 +1,5 @@
 <h2>Assignments</h2>
 <button mat-raised-button (click)="openDialog()" color="primary"><mat-icon>add</mat-icon>Add assignment</button>
 <div *ngFor="let assignment of assignments">
-  {{assignment.name}}
+  <app-assignment-card [assignment]="assignment"></app-assignment-card>
 </div>

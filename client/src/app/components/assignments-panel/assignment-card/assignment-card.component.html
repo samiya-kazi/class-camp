@@ -1,0 +1,9 @@
+<mat-card>
+  <mat-card-title>{{assignment.name}}</mat-card-title>
+  <mat-card-content>
+    <p>Due Date: {{assignment.dueDate ? (assignment.dueDate | date) : 'No due date.'}}</p>
+  </mat-card-content>
+  <mat-card-footer>
+    Total Marks: {{assignment.totalMarks}}
+  </mat-card-footer>
+</mat-card>

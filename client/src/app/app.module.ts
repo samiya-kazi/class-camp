@@ -31,6 +31,7 @@ import { SharedComponentsModule } from './modules/shared-components/shared-compo
 import { InstituteUserReducer } from './store/reducers/instituteUser.reducer';
 import { AssignmentsPanelComponent } from './components/assignments-panel/assignments-panel.component';
 import { AssignmentFormComponent } from './components/assignments-panel/assignment-form/assignment-form.component';
+import { AssignmentCardComponent } from './components/assignments-panel/assignment-card/assignment-card.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { AssignmentFormComponent } from './components/assignments-panel/assignme
     RemoveClassDialogComponent,
     AssignmentsPanelComponent,
     AssignmentFormComponent,
+    AssignmentCardComponent,
   ],
   imports: [
     BrowserModule,
