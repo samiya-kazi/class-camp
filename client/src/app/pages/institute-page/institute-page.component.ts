@@ -43,7 +43,7 @@ export class InstitutePageComponent implements OnInit {
   }
 
   getClasses () {
-    if (this.instituteId)
+    if (this.instituteId && this.instituteUser)
       this.api.getClasses(this.instituteId).subscribe(classes => {
         if (this.instituteUser.type === 'admin') this.classes = classes;
         else this.classes = classes.filter(clss => (this.searchUser(clss.teacher, this.user) || (this.searchUser(clss.students, this.user))));

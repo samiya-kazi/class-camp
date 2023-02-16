@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
@@ -40,6 +41,7 @@ import { NgxMatFileInputModule } from '@angular-material-components/file-input';
     MatDialogModule,
     MatAutocompleteModule,
     MatProgressSpinnerModule,
+    MatCheckboxModule,
     NgxMatFileInputModule
   ],
   exports: [
@@ -57,6 +59,7 @@ import { NgxMatFileInputModule } from '@angular-material-components/file-input';
     DragDropModule,
     MatDialogModule,
     MatAutocompleteModule,
+    MatCheckboxModule,
     MatProgressSpinnerModule,
     NgxMatFileInputModule
   ]

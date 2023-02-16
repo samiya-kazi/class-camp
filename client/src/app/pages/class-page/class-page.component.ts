@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { InstituteUser } from 'src/app/models/institute-user.model';
 import { Post } from 'src/app/models/post.model';
 import { State } from 'src/app/models/state.model';
 import { User } from 'src/app/models/user.model';
@@ -18,6 +19,7 @@ export class ClassPageComponent implements OnInit {
 
   classId! : string | null;
   posts: Post[] = [];
+  instituteUser!: InstituteUser;
 
   post = new FormControl('', [Validators.required]);
 
@@ -31,7 +33,6 @@ export class ClassPageComponent implements OnInit {
     
     const class$ = this.store.select(store => store.class);
     class$.subscribe(clssArr => {
-
       this.classId = clssArr[0]._id;
       this.getPosts(); 
     });
@@ -41,7 +42,11 @@ export class ClassPageComponent implements OnInit {
       this.store.dispatch(SetClassAction({payload: clss}));
       this.store.dispatch(SetInstituteAction({payload: clss.institute}));
     });
-    this.getPosts();
+
+    const instituteUser$ = this.store.select(store => store.instituteUser);
+    instituteUser$.subscribe(instituteUserArr => {
+      this.instituteUser = instituteUserArr[0]; 
+    });
   }
 
   getPosts () {
