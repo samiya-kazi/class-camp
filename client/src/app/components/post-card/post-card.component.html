@@ -17,11 +17,14 @@
         </mat-expansion-panel-header>
         <app-comment-card *ngFor="let comment of post.comments" [comment]="comment"></app-comment-card>
         <div *ngIf="!post.comments.length">No comments for this post.</div>
-        <mat-form-field appearance="outline">
-          <mat-label>Comment</mat-label>
-          <textarea matInput [formControl]='comment' placeholder="Leave a comment"></textarea>
-        </mat-form-field>
-        <button (click)="handleSubmit()">Comment</button>
+
+        <form (submit)="handleSubmit()">
+          <mat-form-field appearance="outline">
+            <mat-label>Comment</mat-label>
+            <textarea matInput [formControl]='comment' placeholder="Leave a comment"></textarea>
+          </mat-form-field>
+          <button>Comment</button>
+        </form>
       </mat-expansion-panel>
     </mat-accordion>
   </mat-card-content>

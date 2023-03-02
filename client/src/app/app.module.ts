@@ -32,6 +32,7 @@ import { InstituteUserReducer } from './store/reducers/instituteUser.reducer';
 import { AssignmentsPanelComponent } from './components/assignments-panel/assignments-panel.component';
 import { AssignmentFormComponent } from './components/assignments-panel/assignment-form/assignment-form.component';
 import { AssignmentCardComponent } from './components/assignments-panel/assignment-card/assignment-card.component';
+import { AssignmentPageComponent } from './pages/assignment-page/assignment-page.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { AssignmentCardComponent } from './components/assignments-panel/assignme
     AssignmentsPanelComponent,
     AssignmentFormComponent,
     AssignmentCardComponent,
+    AssignmentPageComponent,
   ],
   imports: [
     BrowserModule,

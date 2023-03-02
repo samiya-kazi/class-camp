@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AssignmentPageComponent } from './pages/assignment-page/assignment-page.component';
 import { ClassPageComponent } from './pages/class-page/class-page.component';
 import { CreateInstitutePageComponent } from './pages/create-institute-page/create-institute-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'create/institute', component: CreateInstitutePageComponent, canActivate: [AuthGuard]},
   {path: 'institute/:id/admin', component: InstituteAdminPageComponent, canActivate: [AuthGuard]},
   {path: 'class/:id', component: ClassPageComponent, canActivate: [AuthGuard, ClassGuard]},
+  {path: 'assignment/:id', component: AssignmentPageComponent, canActivate: [AuthGuard, ClassGuard]},
   {path: '', pathMatch: 'full', redirectTo: 'home'}
 ];
 

@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card [routerLink]="'/assignment/' + assignment._id">
   <mat-card-title>{{assignment.name}}</mat-card-title>
   <mat-card-content>
     <p>Due Date: {{assignment.dueDate ? (assignment.dueDate | date) : 'No due date.'}}</p>

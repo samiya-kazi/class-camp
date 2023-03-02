@@ -8,6 +8,7 @@ import { Comment } from 'src/app/models/comment.model';
 import { Institute } from 'src/app/models/institute.model';
 import { User } from 'src/app/models/user.model';
 import { Assignment } from 'src/app/models/assignment.model';
+import { AssignmentMark } from 'src/app/models/assignmentMark.model';
 
 @Injectable({
   providedIn: 'root'
@@ -56,6 +57,14 @@ export class ApiClientService {
 
   getAssignments (classId: string) : Observable<Assignment[]> {
     return this.http.get<Assignment[]>(this.rootUrl + '/assignment/class/' + classId);
+  }
+
+  getAssignmentById (id: string) : Observable<Assignment> {
+    return this.http.get<Assignment>(this.rootUrl + '/assignment/id/' + id);
+  }
+
+  getAssignmentMarks (id: string) : Observable<AssignmentMark[]> {
+    return this.http.get<AssignmentMark[]>(this.rootUrl + '/assignment/marks/' + id);
   }
 
   addAssignment (classId: string, name: string, description: string, totalMarks: number, dueDate?: Date) : Observable<Assignment> {
