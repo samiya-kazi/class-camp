@@ -76,7 +76,7 @@ async function postAssignmentMark (req, res) {
       let mark = 0;
   
       if (checkStudentMark.length) {
-        mark = await AssignmentMark.findByIdAndUpdate(checkStudentMark[0]._id, {$set: {marksObtained, postedDate, status}});
+        mark = await AssignmentMark.findByIdAndUpdate(checkStudentMark[0]._id, {$set: {marksObtained, postedDate, status}}, {new: true});
       } else {
         mark = await AssignmentMark.create({assignment, student, marksObtained, postedDate, status});
       }

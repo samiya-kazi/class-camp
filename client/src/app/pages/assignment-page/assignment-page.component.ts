@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Assignment } from 'src/app/models/assignment.model';
@@ -18,8 +19,11 @@ export class AssignmentPageComponent implements OnInit {
   assignment?: Assignment;
   assignmentMarks: AssignmentMark[] = [];
   clss!: InstituteClass;
+  markToUpdate?: AssignmentMark;
 
   displayedColumns: string[] = ['name', 'mark', 'status', 'action'];
+
+  marksControl = new FormControl(0, Validators.max(this.assignment ? this.assignment.totalMarks : 100));
 
   constructor(
     private api: ApiClientService,
@@ -51,27 +55,54 @@ export class AssignmentPageComponent implements OnInit {
 
   getAssignmentMarks () {
     this.api.getAssignmentMarks(this.assignmentId).subscribe({
-      next: res => {
-        this.assignmentMarks = res
-        const noMarks = this.clss.students.filter(student => {
-          return res.reduce((acc: boolean, currMark: AssignmentMark) => {
-            if (currMark.student._id === student._id) return false;
-            return acc;
-          }, true)
-        });
-
-        const newMarks: AssignmentMark[] = noMarks.map(student => {
-          return {
-            assignment: this.assignment!,
-            student,
-            marksObtained: 0,
-            status: 'pending'
-          }
-        });
-
-        this.assignmentMarks = [...res, ...newMarks];
-      }
+      next: res => this.assignmentMarks = this.generateMarks(res)
     })
+  };
+
+  generateMarks (existingMarks: AssignmentMark[]) {
+    const noMarks = this.clss.students.filter(student => {
+      return existingMarks.reduce((acc: boolean, currMark: AssignmentMark) => {
+        if (currMark.student._id === student._id) return false;
+        return acc;
+      }, true)
+    });
+
+    const newMarks: AssignmentMark[] = noMarks.map(student => {
+      return {
+        assignment: this.assignment!,
+        student,
+        marksObtained: 0,
+        status: 'pending'
+      }
+    });
+
+    return [...existingMarks, ...newMarks];
+  }
+
+  selectMarkToUpdate (mark: AssignmentMark) {
+    this.markToUpdate = mark; 
+    this.marksControl.setValue(mark.marksObtained);
+  };
+
+  removeSelect () {
+    this.markToUpdate = undefined;
+  };
+
+  handleSubmitMark (assignmentMark: AssignmentMark) {
+    const { assignment, student } = assignmentMark;
+    const marksObtained = this.marksControl.value!;
+
+    this.api.addAssignmentMark(assignment, student, marksObtained).subscribe({
+      next: res => {
+        this.markToUpdate = undefined;
+        this.assignmentMarks = this.assignmentMarks.map(marks => {
+          if (marks.student.email === res.student.email) {
+            marks = res;
+          }
+          return marks;
+        });
+      }
+    });
   }
 
 }
