@@ -10,6 +10,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { AuthGuard } from './services/auth-guard/auth.guard';
 import { ClassGuard } from './services/class-guard/class.guard';
+import { TeacherGuard } from './services/teacher-guard/teacher.guard';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -19,7 +20,7 @@ const routes: Routes = [
   {path: 'create/institute', component: CreateInstitutePageComponent, canActivate: [AuthGuard]},
   {path: 'institute/:id/admin', component: InstituteAdminPageComponent, canActivate: [AuthGuard]},
   {path: 'class/:id', component: ClassPageComponent, canActivate: [AuthGuard, ClassGuard]},
-  {path: 'assignment/:id', component: AssignmentPageComponent, canActivate: [AuthGuard, ClassGuard]},
+  {path: 'assignment/:id', component: AssignmentPageComponent, canActivate: [AuthGuard, ClassGuard, TeacherGuard]},
   {path: '', pathMatch: 'full', redirectTo: 'home'}
 ];
 

@@ -1,4 +1,4 @@
-<mat-card [routerLink]="'/assignment/' + assignment._id">
+<mat-card [routerLink]="instituteUser.type !== 'student' ? '/assignment/' + assignment._id: []">
     <mat-card-title>{{assignment.name}}</mat-card-title>
     <mat-card-content>
       <div class="assignment-info">
