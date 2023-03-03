@@ -67,6 +67,10 @@ export class ApiClientService {
     return this.http.get<AssignmentMark[]>(this.rootUrl + '/assignment/marks/' + id);
   }
 
+  getAssignmentMarkForUser (id: string) : Observable<AssignmentMark> {
+    return this.http.get<AssignmentMark>(this.rootUrl + '/assignment/user/mark/' + id);
+  }
+
   addAssignment (classId: string, name: string, description: string, totalMarks: number, dueDate?: Date) : Observable<Assignment> {
     return this.http.post<Assignment>(this.rootUrl + '/assignment/create', {classId, name, description, totalMarks, dueDate});
   }

@@ -52,6 +52,16 @@ async function getAssignmentMarks (req, res) {
   }
 }
 
+async function getOwnAssignmentMark (req, res) {
+  try {
+    const { id } = req.params;
+    const marks = await AssignmentMark.findOne({'assignment._id': id, 'user._id': req.user.id});
+    res.status(200).send(marks);
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
+}
 
 async function postAssignmentMark (req, res) {
   try {
@@ -100,6 +110,7 @@ module.exports = {
   getAssignment,
   getAssignmentsInClass,
   getAssignmentMarks,
+  getOwnAssignmentMark,
   postAssignment,
   postAssignmentMark
 }

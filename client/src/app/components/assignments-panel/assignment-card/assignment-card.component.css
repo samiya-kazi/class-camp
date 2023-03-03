@@ -1,0 +1,50 @@
+mat-card {
+  border: grey solid 1px;
+  max-width: 400px;
+  margin: 20px;
+}
+
+mat-card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.assignment-info {
+  padding: 0 10px;
+  max-width: 60%;
+  overflow-wrap: break-word;
+}
+
+.submission-info {
+  border-left: grey solid 1px;
+  padding: 0 20px;
+  width: 26%;
+  overflow-wrap: break-word;
+}
+
+.marks {
+  font-size: x-large;
+}
+
+.status {
+  padding: 3px 10px;
+  color: white;
+  border-radius: 101px;
+}
+
+.pass {
+  background-color: green;
+}
+
+.late {
+  background-color: yellow;
+}
+
+.fail {
+  background-color: red;
+}
+
+.pending {
+  background-color: grey;
+}

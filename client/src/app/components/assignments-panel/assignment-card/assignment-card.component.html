@@ -1,9 +1,25 @@
 <mat-card [routerLink]="'/assignment/' + assignment._id">
-  <mat-card-title>{{assignment.name}}</mat-card-title>
-  <mat-card-content>
-    <p>Due Date: {{assignment.dueDate ? (assignment.dueDate | date) : 'No due date.'}}</p>
-  </mat-card-content>
-  <mat-card-footer>
-    Total Marks: {{assignment.totalMarks}}
-  </mat-card-footer>
+    <mat-card-title>{{assignment.name}}</mat-card-title>
+    <mat-card-content>
+      <div class="assignment-info">
+        <p><b>Description: </b>{{assignment.description}}</p>
+        <p><b>Due Date: </b>{{assignment.dueDate ? (assignment.dueDate | date) : 'No due date.'}}</p>
+        <p><b>Total Marks: </b>{{assignment.totalMarks}}</p>
+      </div>
+      <div *ngIf="instituteUser.type === 'student' && assignmentMarks" class="submission-info">
+        <p><b>Marks obtained: </b></p>
+        <p class="marks">{{assignmentMarks.marksObtained + '/' + assignment.totalMarks}}</p>
+        <p>Status: 
+          <span 
+            class="status"
+            [class.pass]="assignmentMarks.status === 'pass'"
+            [class.late]="assignmentMarks.status === 'late'"
+            [class.fail]="assignmentMarks.status === 'fail'"
+          >{{assignmentMarks.status}}</span></p>
+      </div>
+
+      <div *ngIf="instituteUser.type === 'student' && !assignmentMarks" class="submission-info">
+        <p>Assignment has not been marked, yet.</p>
+      </div>
+    </mat-card-content>
 </mat-card>
