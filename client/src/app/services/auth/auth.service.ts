@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { State } from 'src/app/models/state.model';
 import { User } from 'src/app/models/user.model';
 import { RemoveClassAction } from 'src/app/store/actions/class.action';
@@ -15,7 +16,7 @@ import { RemoveUserAction } from 'src/app/store/actions/user.action';
 })
 export class AuthService {
 
-  rootUrl = 'http://localhost:3000';
+  rootUrl = environment.apiRootUrl;
   constructor(
     private http: HttpClient, 
     private store: Store<State>, 

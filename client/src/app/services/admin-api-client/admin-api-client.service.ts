@@ -7,13 +7,14 @@ import { InstituteUser } from 'src/app/models/institute-user.model';
 import { Institute } from 'src/app/models/institute.model';
 import { State } from 'src/app/models/state.model';
 import { User } from 'src/app/models/user.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminApiClientService {
 
-  rootUrl = 'http://localhost:3000';
+  rootUrl = environment.apiRootUrl;
   institute!: Institute;
 
   constructor(private http: HttpClient, private store: Store<State>) {

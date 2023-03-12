@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiRootUrl: 'http://localhost:3000',
+  cloudinaryRootUrl: 'https://api.cloudinary.com/v1_1/dmpn6t2jn/image/upload',
+  cloudinaryPreset: 'rcqrwjbn'
 };
 
 /*

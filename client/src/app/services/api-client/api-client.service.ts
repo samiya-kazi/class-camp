@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { InstituteClass } from 'src/app/models/class.model';
 import { InstituteUser } from 'src/app/models/institute-user.model';
 import { Post } from 'src/app/models/post.model';
@@ -15,7 +16,7 @@ import { AssignmentMark } from 'src/app/models/assignmentMark.model';
 })
 export class ApiClientService {
 
-  rootUrl = 'http://localhost:3000';
+  rootUrl = environment.apiRootUrl;
 
   constructor(private http: HttpClient) { }
 
