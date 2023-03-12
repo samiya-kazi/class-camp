@@ -33,6 +33,7 @@ import { AssignmentsPanelComponent } from './components/assignments-panel/assign
 import { AssignmentFormComponent } from './components/assignments-panel/assignment-form/assignment-form.component';
 import { AssignmentCardComponent } from './components/assignments-panel/assignment-card/assignment-card.component';
 import { AssignmentPageComponent } from './pages/assignment-page/assignment-page.component';
+import { EditProfilePageComponent } from './pages/edit-profile-page/edit-profile-page.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { AssignmentPageComponent } from './pages/assignment-page/assignment-page
     AssignmentFormComponent,
     AssignmentCardComponent,
     AssignmentPageComponent,
+    EditProfilePageComponent,
   ],
   imports: [
     BrowserModule,

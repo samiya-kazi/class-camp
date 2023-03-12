@@ -1,15 +1,23 @@
 <mat-drawer-container class="container" [autosize]="true">
   <mat-drawer #drawer class="sidenav" mode="side">
-    <div class="nav-button" routerLink="/home">
-      <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
-        <mat-icon>home</mat-icon>
-      </button>
-    </div>
-
-    <div class="nav-button">
-      <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
-        <mat-icon>add</mat-icon>
-      </button>
+    <div class="side-nav-container">
+      <div class="nav-button" routerLink="/home">
+        <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+          <mat-icon>home</mat-icon>
+        </button>
+      </div>
+  
+      <div class="nav-button" routerLink="/edit-profile">
+        <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+          <mat-icon>person</mat-icon>
+        </button>
+      </div>
+  
+      <div class="nav-button" (click)="handleLogout()">
+        <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+          <mat-icon>logout</mat-icon>
+        </button>
+      </div>
     </div>
   </mat-drawer>
 
