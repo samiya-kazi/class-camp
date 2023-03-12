@@ -7,7 +7,7 @@ const ObjectId = require('mongoose').Types.ObjectId;
 
 async function getInstitute (req, res) {
   try {
-    const institutes = await InstituteUser.find({ user: req.user });
+    const institutes = await InstituteUser.find({ 'user._id': req.user._id });
     res.status(200).send(institutes);
   } catch (error) {
     res.status(500).send(error);

@@ -1,6 +1,8 @@
 const { User } = require("../models/user");
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { InstituteUser } = require("../models/instituteUser");
+const { Class } = require("../models/class");
 require('dotenv').config();
 const secret = process.env.JWT_SECRET;
 
@@ -57,4 +59,20 @@ async function login (req, res) {
 }
 
 
-module.exports = { register, login }
+async function editProfile (req, res) {
+  try {
+    const { _id } = req.user;
+    const { firstName, lastName, email, profile_pic_url } = req.body;
+    const result = await User.findByIdAndUpdate(_id, { firstName, lastName, email, profile_pic_url }, {new: true});
+    await InstituteUser.updateMany({'user._id': _id}, {$set: {user: result}});
+    await Class.updateMany({"teacher.user._id": _id}, {$set: {"teacher.$[user]" : result}}, {arrayFilters: [{"user._id": _id}], "multi": true});
+    await Class.updateMany({"students.user._id": _id}, {$set: {"students.$[user]" : result}}, {arrayFilters: [{"user._id": _id}], "multi": true});
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(500).send(error)
+    console.log(error);
+  }
+}
+
+
+module.exports = { register, login, editProfile }
