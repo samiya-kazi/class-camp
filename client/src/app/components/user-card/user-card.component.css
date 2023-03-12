@@ -1,3 +1,21 @@
 mat-card {
   margin: 10px;
 }
+
+.user-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+mat-card-content {
+  display: flex;
+  align-items: center;
+}
+
+p {
+  margin-top: 0;
+  margin-left: 10px;
+}

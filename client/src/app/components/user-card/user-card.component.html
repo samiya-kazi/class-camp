@@ -1,3 +1,9 @@
 <mat-card>
-  <mat-card-content>{{user.firstName + ' ' + user.lastName + ' - ' + user.email}}</mat-card-content>
+  <mat-card-content>
+    <img *ngIf="user.profile_pic_url" [src]="user.profile_pic_url" class="user-img"/>
+    <mat-icon *ngIf="!user.profile_pic_url" color="primary">person</mat-icon>
+    <p>
+      {{user.firstName + ' ' + user.lastName + ' - ' + user.email}}
+    </p>
+  </mat-card-content>
 </mat-card>
