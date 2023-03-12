@@ -1,0 +1,27 @@
+<form [formGroup]="editProfileForm">
+    <h2>Edit Profile</h2>
+    <mat-form-field appearance="fill" class="full-width">
+    <mat-label>First Name</mat-label>
+    <input matInput formControlName="firstName" [required]="true"/>
+    <!-- <mat-error *ngIf="firstName?.errors?.['required']">First name is required</mat-error> -->
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Last Name</mat-label>
+    <input matInput formControlName="lastName" [required]="true"/>
+    <!-- <mat-error *ngIf="lastName?.errors?.['required']">Last name is required</mat-error> -->
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" [required]="true"/>
+    <!-- <mat-error *ngIf="email?.errors?.['email']">Email is invalid</mat-error>
+    <mat-error *ngIf="email?.errors?.['required']">Email is required</mat-error> -->
+    </mat-form-field>
+
+    <mat-label>Profile Picture</mat-label>
+    <img *ngIf="editProfileForm.value.profile_pic_url" [src]="editProfileForm.value.profile_pic_url" class="profile-img"/>
+    <app-file-input (fileUploadEvent)="handleFileUpload($event)"></app-file-input>
+
+    <button mat-raised-button color="primary">Submit Changes</button>
+</form>

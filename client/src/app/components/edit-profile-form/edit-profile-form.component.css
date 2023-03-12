@@ -1,13 +1,14 @@
-.content-container {
-  width: 100%;
-}
-
 form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .profile-img {
   max-width: 30%;
   height: auto;
+}
+
+.full-width {
+  width: 80%;
 }

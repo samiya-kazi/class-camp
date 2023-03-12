@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/models/state.model';
 import { User } from 'src/app/models/user.model';
 
 @Component({
-  selector: 'app-edit-profile-page',
-  templateUrl: './edit-profile-page.component.html',
-  styleUrls: ['./edit-profile-page.component.css']
+  selector: 'app-edit-profile-form',
+  templateUrl: './edit-profile-form.component.html',
+  styleUrls: ['./edit-profile-form.component.css']
 })
-export class EditProfilePageComponent implements OnInit {
+export class EditProfileFormComponent {
 
   user! : User;
 
