@@ -15,3 +15,15 @@
 button {
   margin: 0 5%;
 }
+
+.members {
+  display: flex;
+}
+
+.teachers {
+  width: 30vw;
+}
+
+.students {
+  width: 30vw;
+}

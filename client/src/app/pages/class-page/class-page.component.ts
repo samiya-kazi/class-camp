@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { InstituteClass } from 'src/app/models/class.model';
 import { InstituteUser } from 'src/app/models/institute-user.model';
 import { Post } from 'src/app/models/post.model';
 import { State } from 'src/app/models/state.model';
@@ -18,6 +19,7 @@ import { SetInstituteAction } from 'src/app/store/actions/institute.action';
 export class ClassPageComponent implements OnInit {
 
   classId! : string | null;
+  clss! : InstituteClass | null;
   posts: Post[] = [];
   instituteUser!: InstituteUser;
 
@@ -33,6 +35,7 @@ export class ClassPageComponent implements OnInit {
     
     const class$ = this.store.select(store => store.class);
     class$.subscribe(clssArr => {
+      this.clss = clssArr[0];
       this.classId = clssArr[0]._id;
       this.getPosts(); 
     });
