@@ -20,6 +20,10 @@ export class ApiClientService {
 
   constructor(private http: HttpClient) { }
 
+  editProfile (firstName: string, lastName: string, email: string, profile_pic_url?: string) : Observable<User> {
+    return this.http.put<User>(this.rootUrl + '/edit-profile', {firstName, lastName, email, profile_pic_url});
+  }
+
   getUserInstitutes () : Observable<InstituteUser[]> {
     return this.http.get<InstituteUser[]>(this.rootUrl + '/institute');
   }
