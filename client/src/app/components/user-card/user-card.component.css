@@ -1,5 +1,6 @@
 mat-card {
   margin: 10px;
+  flex-grow: 1;
 }
 
 .user-img {
@@ -18,4 +19,17 @@ mat-card-content {
 p {
   margin-top: 0;
   margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.user-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.email {
+  color: grey;
+  font-size: smaller;
 }
