@@ -22,7 +22,6 @@ import { EditClassFormComponent } from '../../components/edit-class-form/edit-cl
   declarations: [
     InstituteAdminPageComponent,
     ClassMembersManagerComponent,
-    UserCardComponent,
     AddClassMemberFormComponent,
     SettingsPanelComponent,
     InstituteMembersManagerComponent,
@@ -30,7 +29,7 @@ import { EditClassFormComponent } from '../../components/edit-class-form/edit-cl
     AddClassFormComponent,
     DisplayCardComponent,
     EditInstituteFormComponent,
-    EditClassFormComponent
+    EditClassFormComponent,
   ],
   imports: [
     CommonModule,
@@ -43,7 +42,6 @@ import { EditClassFormComponent } from '../../components/edit-class-form/edit-cl
   exports: [
     InstituteAdminPageComponent,
     ClassMembersManagerComponent,
-    UserCardComponent,
     AddClassMemberFormComponent,
     SettingsPanelComponent,
     InstituteMembersManagerComponent,

@@ -4,13 +4,17 @@ import { FileInputComponent } from 'src/app/components/input/file-input/file-inp
 import { MiniSpinnerComponent } from 'src/app/components/loaders/mini-spinner/mini-spinner.component';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ClassMemberListComponent } from 'src/app/components/class-member-list/class-member-list.component';
+import { UserCardComponent } from 'src/app/components/user-card/user-card.component';
 
 
 
 @NgModule({
   declarations: [
     FileInputComponent,
-    MiniSpinnerComponent
+    MiniSpinnerComponent,
+    ClassMemberListComponent,
+    UserCardComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +24,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   exports: [
     FileInputComponent,
-    MiniSpinnerComponent
+    MiniSpinnerComponent,
+    ClassMemberListComponent,
+    UserCardComponent
   ]
 })
 export class SharedComponentsModule { }

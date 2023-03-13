@@ -6,35 +6,9 @@
     </mat-select>
     <mat-hint>Select a class to view members</mat-hint>
   </mat-form-field>
+  <button *ngIf="selectedClass._id !== '0'" type="button" mat-raised-button (click)="openDialog()" class="add-member-btn">
+    <mat-icon>add</mat-icon>Add user to class
+  </button>
 </form>
-<div *ngIf="selectedClass.name !== 'default'">
-  <div class="example-container">
-    <h2>Teachers</h2>
-    
-    <div
-    class="example-list">
-    <div class="example-box" *ngFor="let item of selectedClass.teacher">
-      <div class="user-card">
-        <app-user-card [user]="item"></app-user-card>
-        <mat-icon (click)="handleRemoveUser(item)">delete</mat-icon>
-      </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="example-container">
-    <h2>Students</h2>
-    
-    <div
-    class="example-list">
-    <div class="example-box" *ngFor="let item of selectedClass.students">
-      <div class="user-card">
-        <app-user-card [user]="item"></app-user-card>
-        <mat-icon (click)="handleRemoveUser(item)">delete</mat-icon>
-      </div>
-    </div>
-  </div>
-  </div>
-  
-  <button mat-raised-button (click)="openDialog()"><mat-icon>add</mat-icon>Add user to class</button>
-</div>
+
+<app-class-member-list *ngIf="selectedClass.name !== 'default'" [clss]="selectedClass" [isAdmin]="true"></app-class-member-list>

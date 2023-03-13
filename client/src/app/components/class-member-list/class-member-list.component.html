@@ -1,0 +1,29 @@
+<div class="content-container">
+  <div class="lists">
+    <div class="list-container">
+      <h2>Teachers</h2>
+      
+      <div class="list">
+        <div class="box" *ngFor="let item of clss.teacher">
+          <div class="user-card">
+            <app-user-card [user]="item"></app-user-card>
+            <mat-icon class="delete" *ngIf="isAdmin" (click)="handleRemoveUser(item)">delete</mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="list-container">
+      <h2>Students</h2>
+      
+      <div class="list">
+        <div class="box" *ngFor="let item of clss.students">
+          <div class="user-card">
+            <app-user-card [user]="item"></app-user-card>
+            <mat-icon class="delete" *ngIf="isAdmin" (click)="handleRemoveUser(item)">delete</mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

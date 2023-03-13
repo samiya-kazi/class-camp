@@ -1,0 +1,53 @@
+.list-container {
+  width: 500px;
+  max-width: 100%;
+  margin: 0 25px 25px 0;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.list {
+  border: solid 1px #ccc;
+  min-height: 60px;
+  background-color: #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  display: block;
+}
+
+.box {
+  padding: 0 10px;
+  background-color: #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.box:last-child {
+  border: none;
+}
+
+
+app-user-card {
+  flex-grow: 1;
+}
+
+.user-card {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content-container {
+  display: flex;
+  justify-content: center;
+}
+
+.delete {
+  cursor: pointer;
+}

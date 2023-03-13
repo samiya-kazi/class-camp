@@ -16,16 +16,7 @@
         <app-assignments-panel [classId]="classId" [instituteUser]="instituteUser"></app-assignments-panel>
       </mat-tab>
       <mat-tab label="Members">
-        <div *ngIf="clss" class="members">
-          <div class="teachers">
-            <h3>{{clss.teacher.length > 1 ? 'Teachers' : 'Teacher'}}</h3>
-            <app-user-card *ngFor="let teacher of clss.teacher" [user]="teacher"></app-user-card>
-          </div>
-          <div class="students">
-            <h3>Students</h3>
-            <app-user-card *ngFor="let student of clss.students" [user]="student"></app-user-card>
-          </div>
-        </div>
+        <app-class-member-list *ngIf="clss" [clss]="clss" [isAdmin]="false"></app-class-member-list>
       </mat-tab>
     </mat-tab-group>
   </div>
