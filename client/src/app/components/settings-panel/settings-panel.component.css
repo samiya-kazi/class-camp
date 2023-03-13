@@ -1,19 +1,17 @@
-:host /deep/ .mat-tab-group {
-  flex-direction: row;
+.sections-container {
+  color: white;
+  background-color: #673ab7;
+  height: 100vh;
 }
-:host /deep/ .mat-tab-header {
-  border-bottom: none;
+
+.sections-container > div {
+  padding: 20px;
 }
-:host /deep/ .mat-tab-header-pagination {
-  display: none !important;
+
+.selected {
+  background-color: #8c60d8;
 }
-:host /deep/ .mat-tab-labels {
-  flex-direction: column;
-}
-:host /deep/ .mat-ink-bar {
-  height: 100%;
-  left: 98% !important;
-}
-:host /deep/ .mat-tab-body-wrapper {
-  flex: 1 1 auto;
+
+.content-container {
+  flex-grow: 1;
 }

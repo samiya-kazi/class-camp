@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsPanelComponent implements OnInit {
 
+  sections = ['Institute Details', 'Institute Members', 'Danger Zone'];
+  selectedSection = this.sections[0];
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+
+  handleSectionSelect (section: string) {
+    if (this.selectedSection !== section) {
+      this.selectedSection = section;
+    }
+  }
 }

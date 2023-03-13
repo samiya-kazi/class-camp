@@ -16,6 +16,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
+import { MatRippleModule } from '@angular/material/core';
 
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
@@ -44,6 +45,7 @@ import { NgxMatFileInputModule } from '@angular-material-components/file-input';
     MatProgressSpinnerModule,
     MatCheckboxModule,
     MatTableModule,
+    MatRippleModule,
     NgxMatFileInputModule
   ],
   exports: [
@@ -64,6 +66,7 @@ import { NgxMatFileInputModule } from '@angular-material-components/file-input';
     MatCheckboxModule,
     MatProgressSpinnerModule,
     MatTableModule,
+    MatRippleModule,
     NgxMatFileInputModule
   ]
 })

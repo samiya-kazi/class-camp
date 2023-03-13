@@ -1,9 +1,9 @@
-<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
-  <mat-tab label="Institute Details">
-    <app-edit-institute-form></app-edit-institute-form>
-  </mat-tab>
-  <mat-tab label="Institute Members">
-    <app-institute-members-manager></app-institute-members-manager>
-  </mat-tab>
-  <mat-tab label="Danger Zone"> Content 3 </mat-tab>
-</mat-tab-group>
+<div class="container">
+  <div class="sections-container">
+    <div matRipple [class.selected]="selectedSection === section" *ngFor="let section of sections" (click)="handleSectionSelect(section)">{{section}}</div>
+  </div>
+  <div class="content-container">
+    <app-edit-institute-form *ngIf="selectedSection === 'Institute Details'"></app-edit-institute-form>
+    <app-institute-members-manager *ngIf="selectedSection === 'Institute Members'"></app-institute-members-manager>
+  </div>
+</div>
